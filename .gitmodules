@@ -4,3 +4,6 @@
 [submodule "git/gitstatus"]
 	path = git/gitstatus
 	url = https://github.com/romkatv/gitstatus.git
+[submodule "bash/z"]
+	path = bash/z
+	url = https://github.com/rupa/z
