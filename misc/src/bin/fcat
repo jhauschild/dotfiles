@@ -1,0 +1,12 @@
+#!/bin/bash
+# print the files given as arguments,
+# but separate them visually by printing a colored line with the filename
+# in addition, cut lines to fit to the screen without wrapping
+set -e
+
+for fname in "$@"
+do
+	echo -e "==>\e[32m$fname\e[0m<=="
+	cut -c -$(tput cols) "$fname"
+done
+
