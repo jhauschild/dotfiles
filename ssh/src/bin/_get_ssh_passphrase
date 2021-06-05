@@ -1,0 +1,7 @@
+#!/bin/bash
+if which /usr/bin/pass &> /dev/null
+then
+	/usr/bin/pass show ssh/$HOSTNAME | head -n 1
+else
+	ssh-askpass
+fi
