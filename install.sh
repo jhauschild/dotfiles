@@ -10,26 +10,26 @@ BACKUPALL=false
 DRYRUN=false
 
 link_file () {
-	local SRC="$1" DST="$2"
+	local TARGET="$1" LINKNAME="$2"
 	if [ "$DRYRUN" == true ]
 	then
-		echo "link $DST -> $SRC"
+		echo "link $LINKNAME -> $TARGET"
 		return 0
 	fi
-	# create a link at $DST pointing to $SRC
-	# if $DST exists, ask whether to replace, backup or skip, with the option to do that for all following existing links
+	# create a link at $LINKNAME pointing to $TARGET
+	# if $LINKNAME exists, ask whether to replace, backup or skip, with the option to do that for all following existing links
 	local REPLACE= BACKUP= SKIP= CHOICE=
 	local QUERY=true
-	if [ -f "$DST" -o -d "$DST" -o -L "$DST" ]
+	if [ -f "$LINKNAME" -o -d "$LINKNAME" -o -L "$LINKNAME" ]
 	then
-		if [ "$(readlink $DST)" == "$SRC" ]
+		if [ "$(readlink $LINKNAME)" == "$TARGET" ]
 		then
 			SKIP="true"
 		else
 			if [ "$REPLACEALL" != "true" -a "$BACKUPALL" != "true" -a "$SKIPALL" != "true" ]
 			then
-				echo "trying to create linke from $DST to ${SRC}"
-				echo "but $DST already exists!"
+				echo "trying to create linke from $LINKNAME to ${TARGET}"
+				echo "but $LINKNAME already exists!"
 				while [ "$QUERY" == "true" ]
 				do
 					echo -n "Choose: [s]kip, [S]kip all, [r]eplace, [R]eplace all, [b]ackup, [B]ackup all? "
@@ -65,20 +65,20 @@ link_file () {
 		SKIP=${SKIP:-$SKIPALL}
 		if [ "$BACKUP" == "true" ]
 		then
-			echo "backup $DST.backup"
-			mv "$DST" "$DST.backup"
+			echo "backup $LINKNAME.backup"
+			mv "$LINKNAME" "$LINKNAME.backup"
 		elif [ "$REPLACE" == "true" ]
 		then
-		  rm -rf "$DST"
-		  echo "removed $DST"
+		  rm -rf "$LINKNAME"
+		  echo "removed $LINKNAME"
 		fi
 	fi
 	if [ "$SKIP" == "true" ]
 	then
-		echo "skip $SRC"
+		echo "skip $TARGET"
 	else  # SKIP is empty or "false"
-		echo "linked from $DST to $SRC"
-		ln -s -r "$SRC" "$DST"
+		echo "link from $LINKNAME to $TARGET"
+		ln -s -r "$TARGET" "$LINKNAME"
 	fi
 }
 
@@ -145,10 +145,11 @@ install_topic () {
 		./install.sh
 	else
 		# default installation: create symlinks
-		for FILE in $(find_files "./include" "./exclude")
+		for TARGET in $(find_files "./include" "./exclude")
 		do
-			DST="${FILE/dot-/.}"
-			link_file "$FILE" "$HOME/$DST"
+			FROM="${TARGET#src/}"
+			FROM="${FROM/dot-/.}"
+			link_file "$TARGET" "$HOME/$FROM"
 		done
 	fi
 }
