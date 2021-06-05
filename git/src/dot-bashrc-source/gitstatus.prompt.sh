@@ -1,0 +1,1 @@
+../../gitstatus/gitstatus.prompt.sh
