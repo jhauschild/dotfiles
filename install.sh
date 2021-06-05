@@ -1,0 +1,191 @@
+#!/bin/bash
+
+set -e # exit on error
+
+REPO="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+SKIPALL=false
+REPLACEALL=false
+BACKUPALL=false
+DRYRUN=false
+
+link_file () {
+	local SRC="$1" DST="$2"
+	if [ "$DRYRUN" == true ]
+	then
+		echo "link $DST -> $SRC"
+		return 0
+	fi
+	# create a link at $DST pointing to $SRC
+	# if $DST exists, ask whether to replace, backup or skip, with the option to do that for all following existing links
+	local REPLACE= BACKUP= SKIP= CHOICE=
+	local QUERY=true
+	if [ -f "$DST" -o -d "$DST" -o -L "$DST" ]
+	then
+		if [ "$(readlink $DST)" == "$SRC" ]
+		then
+			SKIP="true"
+		else
+			if [ "$REPLACEALL" != "true" -a "$BACKUPALL" != "true" -a "$SKIPALL" != "true" ]
+			then
+				echo "trying to create linke from $DST to ${SRC}"
+				echo "but $DST already exists!"
+				while [ "$QUERY" == "true" ]
+				do
+					echo -n "Choose: [s]kip, [S]kip all, [r]eplace, [R]eplace all, [b]ackup, [B]ackup all? "
+					read -n 1 CHOICE
+					echo ""  # newline
+					case "$CHOICE" in
+						r )
+							QUERY=false
+							REPLACE=true;;
+						R )
+							QUERY=false
+							REPLACEALL=true;;
+						b )
+							QUERY=false
+							BACKUP=true;;
+						B )
+							QUERY=false
+							BACKUPALL=true;;
+						s )
+							QUERY=false
+							SKIP=true;;
+						S )
+							QUERY=false
+							SKIPALL=true;;
+						* )
+							echo -e "Didn't understand that."
+					esac
+				done
+			fi
+		fi
+		REPLACE=${REPLACE:-$REPLACEALL}
+		BACKUP=${BACKUP:-$BACKUPALL}
+		SKIP=${SKIP:-$SKIPALL}
+		if [ "$BACKUP" == "true" ]
+		then
+			echo "backup $DST.backup"
+			mv "$DST" "$DST.backup"
+		elif [ "$REPLACE" == "true" ]
+		then
+		  rm -rf "$DST"
+		  echo "removed $DST"
+		fi
+	fi
+	if [ "$SKIP" == "true" ]
+	then
+		echo "skip $SRC"
+	else  # SKIP is empty or "false"
+		echo "linked from $DST to $SRC"
+		ln -s -r "$SRC" "$DST"
+	fi
+}
+
+
+find_files () {
+	# find all files *not* matching any pattern given in the file $1
+	# with hard-coded exclusions below
+	local INCLUDEFILE="$1"
+	local EXCLUDEFILE="$2"
+	local PATTERN
+	#  hard-coded excludes (as arguments to `find`)
+	set -- -name "README*" -o -name "LICENSE*" -o -name "exclude" -o -name "include" -o -name ".*" -o -name "bootstrap.sh" -o -name "install.sh"
+	# 'set --' sets the argument list to whatever follows, used later as "$@".
+	if [ -n "$EXCLUDEFILE" -a -f "$EXCLUDEFILE" ]
+	then
+		while IFS= read -r PATTERN
+		do
+			PATTERN="${PATTERN%#*}" # remove any comments starting with #
+			if [ -n "$PATTERN" ]
+			then
+				set -- "$@" -o -name "$PATTERN"
+			fi
+		done < "$EXCLUDEFILE"
+	fi
+	set -- -not \( "$@" \)
+	if [ -n "$INCLUDEFILE" -a -f "$INCLUDEFILE" ]
+	then
+		local HASCONTENT=false
+		while IFS= read -r PATTERN
+		do
+			if [ -n "${PATTERN%#*}" ]
+			then
+				HASCONTENT=true
+			fi
+		done < "$INCLUDEFILE"
+		if [ "$HASCONTENT" == true ]
+		then
+			set -- \) "$@"
+			while IFS= read -r PATTERN
+			do
+				PATTERN="${PATTERN%#*}" # remove any comments starting with #
+				if [ -n "$PATTERN" ]
+				then
+					set -- -o -name "$PATTERN" "$@"
+				fi
+			done < "$INCLUDEFILE"
+			shift   # remove -o at beginnging
+			set -- \( "$@"
+		fi
+	fi
+	find . -mindepth 1 -type f "$@"
+}
+
+install_topic () {
+	# call bootstrap script and 
+	# symlink all the files from the current folder into ~/
+	if [ -x ./bootstrap.sh ]
+	then
+		echo "call bootstrap script"
+		./bootstrap.sh
+	fi
+	if [ -x ./install.sh ]
+	then
+		./install.sh
+	else
+		# default installation: create symlinks
+		for FILE in $(find_files "./include" "./exclude")
+		do
+			DST="${FILE/dot-/.}"
+			link_file "$FILE" "$HOME/$DST"
+		done
+	fi
+}
+
+
+parse_args () {
+	while [[ "$1" =~ ^- ]]
+	do
+		case "$1" in
+		-h | --help )
+			echo "$0 [-h] [-n] topic [topic ...]"
+			echo "Install the given 'topic' folders."
+			echo "-h, --help: display this help and exit"
+			echo "-n, --dry-run:  don't do something, only display what would be done."
+			exit
+			;;
+		-n | --dry-run )
+			DRYRUN=true
+			;;
+		esac
+		shift
+	done
+	if [ $# == 0 ]
+	then
+		set -- "$(find .  -mindepth 1 -name "*" -type d)"
+	fi
+	for TOPIC in "$@"
+	do 
+		cd "$REPO"
+		echo "================================================================================"
+		echo "TOPIC=$TOPIC"
+		echo "================================================================================"
+		cd "$TOPIC"
+		install_topic "$TOPIC"
+	done
+}
+
+parse_args "$@"
+
+# TODO: uninstall?
