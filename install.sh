@@ -90,7 +90,7 @@ find_files () {
 	local EXCLUDEFILE="$2"
 	local PATTERN
 	#  hard-coded excludes (as arguments to `find`)
-	set -- -name "README*" -o -name "LICENSE*" -o -name "exclude" -o -name "include" -o -name ".*" -o -name "bootstrap.sh" -o -name "install.sh"
+	set -- -name ".*"
 	# 'set --' sets the argument list to whatever follows, used later as "$@".
 	if [ -n "$EXCLUDEFILE" -a -f "$EXCLUDEFILE" ]
 	then
@@ -129,7 +129,7 @@ find_files () {
 			set -- \( "$@"
 		fi
 	fi
-	find . -mindepth 1 -type f "$@"
+	find src -mindepth 1 -type f "$@"
 }
 
 install_topic () {
