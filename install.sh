@@ -174,7 +174,7 @@ parse_args () {
 	done
 	if [ $# == 0 ]
 	then
-		set -- "$(find .  -mindepth 1 -type d -not -name ".*")"
+		set -- "$(find . -mindepth 1 -maxdepth 1 -type d -not -name ".*")"
 	fi
 	for TOPIC in "$@"
 	do 
