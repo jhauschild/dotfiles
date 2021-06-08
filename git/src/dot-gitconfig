@@ -1,0 +1,39 @@
+[user]
+	name = Johannes Hauschild
+	email = git@johannes-hauschild.de
+	signingkey = D25EE41EC6257B02
+[core]
+	autocrlf = input
+	safecrlf = warn
+	editor = nvim
+	excludesfile = ~/.cvsignore
+[alias]
+	co = checkout
+	cm = commit
+	st = status --show-stash
+	br = branch
+	hist = log --pretty=format:\"%h %ad %G? | %s%d [%an]\" --graph --date=short
+	hista = log --pretty=format:\"%h %ad %G? | %s%d [%an]\" --graph --date=short --all
+	type = cat-file -t
+	dump = cat-file -p
+	cat = show
+[push]
+	default = simple
+	recurseSubmodules = check
+[diff "pdfdiff"]
+	command = diffpdf
+[diff "jupyternotebook"]
+	command = git-nbdiffdriver diff
+[merge "jupyternotebook"]
+	driver = git-nbmergedriver merge %O %A %B %L %P
+	name = jupyter notebook merge driver
+[difftool "nbdime"]
+	cmd = git-nbdifftool diff \"$LOCAL\" \"$REMOTE\" \"$BASE\"
+[difftool]
+	prompt = false
+[mergetool "nbdime"]
+	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[mergetool]
+	prompt = false
+[commit]
+	gpgsign = true

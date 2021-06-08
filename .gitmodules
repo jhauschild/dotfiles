@@ -7,3 +7,6 @@
 [submodule "bash/z"]
 	path = bash/z
 	url = https://github.com/rupa/z
+[submodule "git/transcrypt"]
+	path = git/transcrypt
+	url = https://github.com/elasticdog/transcrypt.git
