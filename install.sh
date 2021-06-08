@@ -22,13 +22,13 @@ link_file () {
 	local QUERY=true
 	if [ -f "$LINKNAME" -o -d "$LINKNAME" -o -L "$LINKNAME" ]
 	then
-		if [ "$(readlink $LINKNAME)" == "$TARGET" ]
+		if [ "$(readlink -m $LINKNAME)" == "$(readlink -m $TARGET)" ]
 		then
 			SKIP="true"
 		else
 			if [ "$REPLACEALL" != "true" -a "$BACKUPALL" != "true" -a "$SKIPALL" != "true" ]
 			then
-				echo "trying to create linke from $LINKNAME to ${TARGET}"
+				echo "trying to create link from $LINKNAME to ${TARGET}"
 				echo "but $LINKNAME already exists!"
 				while [ "$QUERY" == "true" ]
 				do
@@ -129,7 +129,7 @@ find_files () {
 			set -- \( "$@"
 		fi
 	fi
-	find src -mindepth 1 -type f "$@"
+	find src -mindepth 1 \( -type f -o -type l \) "$@"
 }
 
 install_topic () {
@@ -174,7 +174,7 @@ parse_args () {
 	done
 	if [ $# == 0 ]
 	then
-		set -- "$(find .  -mindepth 1 -name "*" -type d)"
+		set -- "$(find .  -mindepth 1 -type d -not -name ".*")"
 	fi
 	for TOPIC in "$@"
 	do 
