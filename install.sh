@@ -29,7 +29,13 @@ link_file () {
 			if [ "$REPLACEALL" != "true" -a "$BACKUPALL" != "true" -a "$SKIPALL" != "true" ]
 			then
 				echo "trying to create link from $LINKNAME to ${TARGET}"
-				echo "but $LINKNAME already exists!"
+				if [ -L "$LINKNAME" ]
+				then
+					POINTSTO=", pointing to $(readlink -m $LINKNAME)"
+				else
+					POINTSTO=""
+				fi
+				echo "but $LINKNAME already exists$POINTSTO"
 				while [ "$QUERY" == "true" ]
 				do
 					echo -n "Choose: [s]kip, [S]kip all, [r]eplace, [R]eplace all, [b]ackup, [B]ackup all? "
@@ -78,6 +84,10 @@ link_file () {
 		echo "skip $TARGET"
 	else  # SKIP is empty or "false"
 		echo "link from $LINKNAME to $TARGET"
+		if [ ! -d "$(dirname $LINKNAME)" ]
+		then
+			mkdir -p "$(dirname $LINKNAME)"
+		fi
 		ln -s -r "$TARGET" "$LINKNAME"
 	fi
 }
@@ -174,7 +184,7 @@ parse_args () {
 	done
 	if [ $# == 0 ]
 	then
-		set -- "$(find . -mindepth 1 -maxdepth 1 -type d -not -name ".*")"
+		set -- $(find . -mindepth 1 -maxdepth 1 -type d -not -name ".*")
 	fi
 	for TOPIC in "$@"
 	do 
