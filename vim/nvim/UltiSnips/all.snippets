@@ -1,0 +1,23 @@
+
+snippet JMH "my name"
+Johannes Hauschild
+endsnippet
+
+snippet today "YYYY-MM-DD of today"
+`date +%Y-%m-%d`
+endsnippet
+
+#snippet b
+#[b]${VISUAL}[/b]
+#endsnippet
+
+snippet __file__ "filename"
+`!p snip.rv = snip.fn`
+endsnippet
+
+snippet "range\((\d+),\s*(\d+)\)" "expand an integer range" r
+`!p snip.rv = ' '.join(map(str, range(int(match.group(1)), int(match.group(2)))))`
+endsnippet
+
+
+

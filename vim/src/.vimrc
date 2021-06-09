@@ -1,0 +1,176 @@
+" ~/.vimrc (configuration file for vim only)
+" created by joghurt (at least mostly :D )
+
+"----------------------------------------------------------
+"  Global Settings
+"----------------------------------------------------------
+
+
+" Use Vim settings, rather than Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+
+" the most important thing: activate the filetype support
+filetype plugin on
+filetype indent on
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+
+" Tunr on that syntax highlighting
+syntax on
+syntax sync maxlines=10000
+
+" allow hidden buffer so they don't have to be saved every time
+set hidden
+
+" fileencoding
+set encoding=utf-8
+
+
+set history=250		" keep 250 lines of command line history
+set showcmd			" display incomplete commands
+set incsearch		" do incremental searching
+set hlsearch		" highlight the last used search pattern
+
+set showmode 		" Show, wich mode we are in
+
+
+" Search for selected text, forwards or backwards.
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+
+" <C-u> in insert mode deletes text typed in the current line; similarly
+" <C-w> deletes a typed word. The deleted text is not saved in the
+" undo-register, as it is part of the last command(=insert).
+" We use <C-g>u to set a break-point for undo (start a new edit), s.t.
+" deleting the line/word can be un-done
+inoremap <C-u> <C-g>u<C-u>
+inoremap <C-w> <C-g>u<C-w>
+
+" undo-persistence: keep history of undo's over closing a file.
+set undofile
+" however, these files are never deleted. To avoid a pollution throughout
+" the file system, we save it in a separate folder in the homedirectory.
+" If this folder does not exist, no undofile is saved.
+set undodir=~/.vimundo/
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+"Turn of the highlight search
+nmap ,n :set hls! hls?<cr>
+
+" search for todo
+" nmap ,t /TODO<cr> 
+
+" Window navigation:
+noremap <silent> ,h :wincmd h<cr>	
+noremap <silent> ,j :wincmd j<cr>	
+noremap <silent> ,k :wincmd k<cr>	
+noremap <silent> ,l :wincmd l<cr>	
+
+
+set vb " don't beep
+
+" When the page starts to scroll, keep the curser 8 lines from
+" the top and 8 lines from the bottom
+set scrolloff=8
+
+" default for vim is "aABceFs", 
+set cpoptions=aABceFIs$ 
+
+" set status line as i can good read it...
+set stl=%f\ %m\ %r\ %=\ Line:%4.4l/%L\ [%1p%%]\ Col:%3.3v\ Buf:#%2n 
+
+" always show a status line
+set laststatus=2
+
+" Make command-line complettion better 
+set wildmenu
+
+" automatically read a file that has changed on disk
+set autoread
+
+" I hate typing <A-GR ß> for backslash, its much easyer to type ','
+let mapleader=","
+let maplocalleader=","
+
+
+" tabwidth of 8 is definitely too much
+" WARNING: printing will though use 8 tabs,
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+
+" expand tabs to 4 spaces 
+" set expandtab
+" (use :retab to expand existing tabs, or CTRL-V<TAB> to insert a real tab)
+
+" Display tabs with a bar
+set list
+set listchars=tab:\|\ ,trail:_
+
+" show linenumbers
+set number
+
+
+" textwidth means if I paste text (not with :paste),
+" lines will be broken after 80 chars at the next withespace
+" it will be set for cpp files in the file-type plugin.
+set textwidth=0
+
+" with linebreak on, vim brakes lines at charackters set in
+" breakat, default of breakat is  " ^I!@*-+;:,./?" ...
+set linebreak
+
+" Showbreak is a string put before lines broken by wrap to
+" indicate, that theres no real <EOL>
+let &showbreak="+++ "
+
+" map jj to <esc> in insert mode
+imap jj <esc>
+
+" folding is very useful to get an overview: 
+" use zM to fold all, use zn to unfold all
+" this may be overwritten by plugins, eg for python
+" or in filetype-plugins, to use syntax
+set foldmethod=indent
+set foldlevelstart=4
+set foldcolumn=2
+set foldopen-=search  " search only unfolded text
+
+
+"----------------------------------------------------------
+"  GUI settings
+"----------------------------------------------------------
+if has("gui_running")
+	set guifont=Monospace\ 12
+else
+	" in terminals I have a dark background
+	set background=dark
+	" setting this adjusts the other colors to be better visible
+endif
+
+" copy and paste to system clipbord
+vmap <C-c> "+y
+vmap <C-x> "+c
+nmap <C-P> "+p
+
+
+
+" ~/.vimrc ends here   
