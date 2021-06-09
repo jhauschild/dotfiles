@@ -23,6 +23,7 @@ fi
 conda deactivate
 
 
+DIR="$(realpath $(dirname $0))"
 if [ -e "$HOME/.config/nvim" -o -L "$HOME/.config/nvim" ]
 then
 	echo "~/config/nvim already exists"

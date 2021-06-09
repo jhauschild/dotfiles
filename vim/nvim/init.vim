@@ -55,7 +55,7 @@ Plug 'honza/vim-snippets'  " snippets for ultisnips
 " see https://addons.mozilla.org/en-US/firefox/addon/firenvim/
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) }}
 
-Plug 'ludovicchabant/vim-gutentags'
+
 " ---------------------------------------------------------
 " IDE-behaviour for vim
 " ---------------------------------------------------------
@@ -78,10 +78,12 @@ endfunction
 Plug 'ycm-core/YouCompleteMe', { 'branch': 'legacy-py2', 'do': function('BuildYCM')}
 
 Plug 'dense-analysis/ale'  " asynchronous syntax/lint checker
+" Plug 'ludovicchabant/vim-gutentags'
 
 " Git integration
 Plug 'airblade/vim-gitgutter'   " show git changes in the current file
 Plug 'tpope/vim-fugitive'   " integration of git commands
+
 
 
 " ---------------------------------------------------------
@@ -267,7 +269,7 @@ let g:latex_to_unicode_keymap = 1
 let g:pymode_python = 'python3'
 " select features i want:
 let g:pymode_indent = 1
-let g:pymode_folding = 1
+let g:pymode_folding = 0  " slow!
 let g:pymode_motion = 1
 let g:pymode_doc = 0
 let g:pymode_virtualenv = 0

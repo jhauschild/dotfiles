@@ -1,0 +1,165 @@
+#!/usr/bin/env python
+"""Given a bunch of filenames of a certain pattern, find and print the ones missing.
+
+Example of files:
+    file_x_1.0_y_5.pklz file_x_2.0_y_5.pklz file_x_3.5_y_5.pklz
+    file_x_1.0_y_8.pklz                     file_x_3.5_y_8.pklz
+    file_x_1.0_y_10.pklz file_x_2.0_y_10.pklz
+yields:
+    file_x_2.0_y_5.pklz
+    file_x_3.5_y_8.pklz
+"""
+import argparse
+
+def parse_args():
+    """argument parsing. returns the namespace of arguments"""
+    parser = argparse.ArgumentParser(
+        description="""
+        given a list of filenames consisting of fields (separated by SEP),
+        check all possible combinations of fields and print the ones missing""",
+        epilog="written by Joghurt")
+    parser.add_argument('-s', '--separator', type=str, nargs='+', default=['_'],
+                        help="string[s] separating the fields. Defaults to '_'")
+    parser.add_argument('-e', '--sep-ending', action='store_true',
+                        help="consider filename endings (=everything after last '.') as separate field")
+    parser.add_argument('-f', '--fields', action='store_true',
+                        help="print only the different fields, not the files missing")
+    parser.add_argument('-v', '--verbose', action='store_true',
+                        help="print both the fields and the files missing")
+    parser.add_argument('-n', '--numbers', action='store_true',
+                        help="try to sort fields as numbers")
+    parser.add_argument('files', nargs='+', help="list of filenames to be considered")
+    return parser.parse_args()
+
+
+def split(str, separators, sep_ending):
+    """split string into parts by a list of separators.
+    Includes the separators into the list of parts.
+    Raises a ValueError if there is no split"""
+    cuts = set()
+    for sep in separators:
+        sepl = len(sep)
+        i = str.find(sep)
+        while i >= 0:
+            cuts.add(i)
+            cuts.add(i+sepl)
+            i = str.find(sep, i+sepl)
+    if sep_ending:
+        i = str.rfind('.')
+        if i >= 0:
+            cuts.add(i)
+            cuts.add(i+1)
+    if len(cuts) == 0:
+        raise ValueError("Split not possible: no separator found")
+    c0 = 0
+    cuts.add(len(str))
+    cuts = sorted(cuts)
+    res = []
+    for c1 in cuts:
+        res.append(str[c0:c1])
+        c0 = c1
+    return res
+
+
+def get_matches(fn_list, separators, sep_ending):
+    """split all entries in fn_list with all separators to get 'matches'.
+    Return a list of possible matches on each position. """
+    matches = []
+    for fn in fn_list:
+        fields = split(fn, separators, sep_ending)
+        if len(matches) == 0:
+            matches = [{f} for f in fields]
+        elif len(matches) != len(fields):
+            raise ValueError(fn + " has wrong number of fields")
+        else:
+            for m, f in zip(matches, fields):
+                m.add(f)
+    return [sorted(ms) for ms in matches]
+
+
+def sort_numbers(matches):
+    """try to sort matches as numbers.
+    Returns matches, matches_abbrev
+    In matches_abbrev, sequences of integer numbers are abbreviated"""
+    matches_abbrev = matches[:]  # flat copy
+    for i, ms in enumerate(matches):
+        if len(ms) == 1:
+            continue
+        try:
+            ms_int = sorted(ms, key=int)
+        except ValueError:
+            try:
+                ms_float = sorted(ms, key=float)
+            except ValueError:
+                pass
+            else:
+                # converted to ms_float without error
+                matches_abbrev[i] = matches[i] = ms_float
+        else:
+            # converted to ms_int without errors
+            ms = matches[i] = ms_int
+            # try to abbreviate sequences
+            # goal:  2 3 5 6 7 8 11 -> 2 3 5 ... 8 11
+            # succesor[i] := (ms[i+1] ==  ms[i]+1)
+            succesor = [(int(m1)+1 == int(m2)) for m1, m2 in zip(ms[:-1], ms[1:])] + [False]
+            abbr = [ms[0]]
+            in_seq = succesor[0]
+            for j in range(1, len(ms)):
+                if in_seq:
+                    if succesor[j]:
+                        if abbr[-1] != '...':
+                            abbr.append('...')
+                    else:
+                        abbr.append(ms[j])
+                        in_seq = False
+                else:
+                    abbr.append(ms[j])
+                    in_seq = succesor[j]
+            matches_abbrev[i] = abbr
+    return matches, matches_abbrev
+
+
+def print_fields(matches):
+    """print the matches below each other, like:
+    begin_some _thing.pklz
+          other       out
+    """
+    maxfieldlens = [max([len(f) for f in ms]) for ms in matches]
+    for i_line in range(max([len(ms) for ms in matches])):
+        line = []
+        for flen, ms in zip(maxfieldlens, matches):
+            if i_line < len(ms):
+                line.append(ms[i_line] + ' '*(flen-len(ms[i_line])))
+            else:
+                line.append(' ' * flen)
+        print(''.join(line))
+
+
+def print_missing(begin, matches, list):
+    """recursively search for begin_{m1,m2,...}_... in list, print missing"""
+    if len(matches) > 0:
+        for f in matches[0]:
+            print_missing(begin+f, matches[1:], list)
+    else:
+        if begin not in list:
+            print(begin)
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    fn_list = set(args.files)  # faster searching for entries with set: uses hashes
+    matches = get_matches(fn_list, args.separator, args.sep_ending)
+
+    if args.numbers:
+        matches, matches_abbr = sort_numbers(matches)
+    else:
+        matches_abbr = matches  # nothing to abbreviate
+
+    # output
+    if args.verbose or args.fields:
+        print_fields(matches_abbr)
+
+    if not args.fields:
+        if args.verbose:
+            print("missing files", "-"*50)
+        print_missing("", matches, fn_list)

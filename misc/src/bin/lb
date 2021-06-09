@@ -1,0 +1,86 @@
+#!/usr/bin/env python
+"""list files matching a pattern, but only the COUNT first letters and their multiplicity
+
+Sometimes, it happens that I have directories with very many files (and long filenames),
+where the beginning coincides for some of them.
+This script aims to give an overview over such directories.
+"""
+# TODO: handle directories separately?
+
+import argparse
+import glob
+import os
+import sys
+from math import log10, ceil
+
+
+# get terminal size
+theigh, twidth = os.popen('stty size', 'r').read().split()
+
+parser = argparse.ArgumentParser(
+    description="list files beginning with the same first COUNT letters",
+    epilog="written by Joghurt")
+
+parser.add_argument('-c', '--count', type=int, default=10,
+                    help="the number of letters to distinguish at the beginning")
+parser.add_argument('-m', '--min', type=int,
+                    help="print only matches where at least MAX files are found")
+parser.add_argument('-o', '--onecolumn', action='store_true',
+                    help="if not given, print in as many columns as fit on the screen")
+parser.add_argument('-r', '--reverse', action='store_true',
+                    help="distinguish files by the endings instead of beginnings")
+parser.add_argument('pattern', nargs='*', help="patterns to be shown")
+args = parser.parse_args()
+
+c = args.count
+assert(c > 0)
+
+if args.pattern == []:
+    args.pattern.append('*')
+
+
+# first collect all files matching at least one of the patterns
+matches = set([match for pat in args.pattern for match in glob.iglob(pat)])
+counts = {}
+for m in matches:
+    if not args.reverse:
+        m_part = m[:c]
+    else:
+        m_part = m[-c:]
+    if m_part not in counts:
+        counts[m_part] = 1
+    else:
+        counts[m_part] += 1
+
+if args.min:
+    for k in counts.copy():
+        if counts[k] < args.min:
+            del(counts[k])
+
+sorted_keys = sorted(counts)
+
+if len(counts) == 0:
+    sys.exit("Error: No matching files")
+
+# it remains to print the result in a nice form with multiple columns
+
+# find maximum width of maximum count
+w = int(ceil(log10(max(counts.values()))))
+if args.onecolumn:
+    cols = 1
+else:
+    cols = max([int(twidth)/(c+w+4), 1])
+N = len(sorted_keys)
+rows = int(ceil(1.*N / cols))
+
+for i in range(rows):
+    for j in range(cols):
+        k = j*rows+i
+        if k < N:
+            f = sorted_keys[k]
+            if j + 1 == cols:
+                print(f.ljust(c), repr(counts[f]).rjust(w), end=' ')
+            else:
+                print(f.ljust(c), repr(counts[f]).rjust(w), " ", end=' ')
+        if j + 1 == cols:
+            print("")
