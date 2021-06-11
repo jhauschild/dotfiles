@@ -1,6 +1,6 @@
 #!/bin/bash
 
-alias ipy="ipython"
+alias ipy="ipython --colors='Linux'"
 alias jn="jupyter notebook"
 alias p="python"
 alias p3="python3"
