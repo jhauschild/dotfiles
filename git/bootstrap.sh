@@ -6,6 +6,7 @@ git submodule update .
 
 DIR="$(realpath $(dirname $0))"
 echo "DIR=$DIR"
+test -d $DIR/src/dot-bashrc-source  || mkdir $DIR/src/dot-bashrc-source
 if [ -f $DIR/gitstatus/gitstatus.prompt.sh ]
 then
 	echo "found gitstatus"
