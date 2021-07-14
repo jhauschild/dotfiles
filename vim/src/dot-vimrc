@@ -166,11 +166,22 @@ else
 	" setting this adjusts the other colors to be better visible
 endif
 
-" copy and paste to system clipbord
-vmap <C-c> "+y
-vmap <C-x> "+c
-nmap <C-P> "+p
+nmap Y y$
 
+" copy and paste to system clipbord
+" single press: copy to system clipboard (register '+')
+" double press: copy to selection clipboard (register '*')
+vmap <C-c> "+y
+vmap <C-c><C-c> "*y
+vmap <C-x> "+c
+vmap <C-x><C-x> "*c
+" <Insert> is the corresponding key on the keyboard!
+" <S-Insert> is linux default for the `*` register
+nmap <Insert> "+p
+cmap <Insert> "+p
+imap <Insert> <Esc>"+pa
+nmap <S-Insert> "*p
+cmap <S-Insert> "*p
 
 
 " ~/.vimrc ends here   
