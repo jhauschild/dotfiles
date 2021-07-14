@@ -10,7 +10,20 @@ then
 cat << EOF  > ~/.bashrc
 if [[ "\$HOSTNAME" == $PATTERN ]] 
 then
-  test -x ~/.bashrc-interactive && source ~/.bashrc-interactive
+	if [ -f ~/.bashrc-interactive ]
+	then
+		source ~/.bashrc-interactive
+	fi
+else
+	if [ -f /etc/.bashrc ]
+	then
+		source /etc/.bashrc
+	fi
+	if [ -f ~/.bashrc-source/aaa_paths.sh ]
+	then
+		source ~/.bashrc-source/aaa_paths.sh
+		add_path 'MODULEPATH' "\$HOME/.modulefiles"
+	fi
 fi
 EOF
 	else
