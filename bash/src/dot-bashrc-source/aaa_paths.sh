@@ -38,6 +38,6 @@ add_path() {
     fi
 }
 
-add_path 'PATH' "$HOME/.local/bin" first
+test -d "$HOME/.local/bin" && add_path 'PATH' "$HOME/.local/bin" first
 add_path 'PATH' "$HOME/bin" first
 
