@@ -188,6 +188,8 @@ vnoremap <silent> # :<C-U>
 "Toggle highlight search
 nmap ,n :set hls! hls?<cr>
 
+nmap Y y$
+
 " copy and paste to system clipbord
 " single press: copy to system clipboard (register '+')
 " double press: copy to selection clipboard (register '*')
