@@ -33,8 +33,10 @@
 	prompt = false
 [mergetool "nbdime"]
 	cmd = git-nbmergetool merge \"$BASE\" \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
-[mergetool]
-	prompt = false
+; [mergetool]
+;     prompt = false
+[mergetool "nvim"]
+	cmd = nvim -c \"Gvdiffsplit!\" \"$MERGED\"
 [commit]
 	gpgsign = true
 [pull]

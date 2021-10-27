@@ -116,10 +116,11 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-
 " expand tabs to 4 spaces 
 " set expandtab
 " (use :retab to expand existing tabs, or CTRL-V<TAB> to insert a real tab)
+let g:python_recommended_style=0
+
 
 " Display tabs with a bar
 set list

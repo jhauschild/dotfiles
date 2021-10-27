@@ -156,6 +156,8 @@ set nomodeline " security issue
 set updatetime=500
 
 
+set diffopt=internal,filler,vertical,hiddenoff
+
 "----------------------------------------------------------
 " key bindings and mappings
 "----------------------------------------------------------
