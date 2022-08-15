@@ -14,5 +14,6 @@ alias la="ls --color=auto -lah"
 alias du="du -sh"
 
 alias today="date +%F"
+alias now="date +%F_%T"
 alias tdir='mkdir tmp_$(today) && cd tmp_$(today)'
 alias tdirrm='PWD=$(pwd); test ${PWD%tmp_$(today)} != $(pwd) && cd .. && \rm -r -I tmp_$(today)'

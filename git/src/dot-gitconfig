@@ -13,6 +13,7 @@
 	st = status --show-stash
 	br = branch
 	hist = log --pretty=format:\"%h %ad %G? | %s%d [%an]\" --graph --date=short
+	# use git hist branch_a..branch_b to see differences between graphs!
 	hista = log --pretty=format:\"%h %ad %G? | %s%d [%an]\" --graph --date=short --all
 	type = cat-file -t
 	dump = cat-file -p

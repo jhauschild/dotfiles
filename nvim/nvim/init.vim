@@ -288,7 +288,7 @@ let g:pymode_trim_whitespace = 0
 
 " ---------------------------------------------------------
 " latex-suite
-" let g:Tex_CompileRule_pdf="lualatex -interaction=nonstopmode -synctex=1 -src-specials $*"
+let g:Tex_CompileRule_pdf="lualatex -interaction=nonstopmode -synctex=1 -src-specials --shell-escape $*"
 " let g:Tex_DefaultTargetFormat='pdf'
 " let g:Tex_ViewRule_pdf = 'okular --unique'
 " ---------------------------------------------------------
