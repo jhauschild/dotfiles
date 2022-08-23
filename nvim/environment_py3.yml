@@ -3,5 +3,6 @@ dependencies:
   - python>=3.6
   - setuptools>=30.3.0
   - pyyaml
+  - pip
   - pip:
     - neovim-remote

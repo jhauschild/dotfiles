@@ -12,7 +12,7 @@ else
 	#conda env create -f environment_py2.yml
 fi
 
-conda activate neovim-py3
+source activate neovim-py3
 FROM="$HOME/bin/nvr"
 TARGET="$(which nvr)"
 if [ \( ! -e "$FROM" \) -a -x "$(which nvr)" -a "$(which nvr)" != "$FROM" ]
@@ -20,7 +20,7 @@ then
 	echo "create link for nvr"
 	ln -s $(which nvr) "$FROM"
 fi
-conda deactivate
+source deactivate
 
 
 DIR="$(realpath $(dirname $0))"
@@ -32,3 +32,6 @@ else
 	ln -s -r $DIR/nvim $HOME/.config/nvim
 fi
 
+
+
+nvim +:checkhealth +:PlugInstall

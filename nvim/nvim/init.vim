@@ -19,8 +19,8 @@
 if isdirectory(expand('~/installer/miniconda3/envs/neovim-py2/bin'))
 let g:python_host_prog  = '~/installer/miniconda3/envs/neovim-py2/bin/python'
 endif
-if isdirectory(expand('~/installer/miniconda3/envs/neovim-py3/bin'))
-let g:python3_host_prog  = '~/installer/miniconda3/envs/neovim-py3/bin/python'
+if isdirectory(expand('~/.conda/envs/neovim-py3/bin'))
+let g:python3_host_prog  = '~/.conda/envs/neovim-py3/bin/python'
 endif
 
 
@@ -75,7 +75,7 @@ function! BuildYCM(info)
     !python ./install.py
   endif
 endfunction
-Plug 'ycm-core/YouCompleteMe', { 'branch': 'legacy-py2', 'do': function('BuildYCM')}
+Plug 'ycm-core/YouCompleteMe', { 'branch': 'master', 'do': function('BuildYCM')}
 
 Plug 'dense-analysis/ale'  " asynchronous syntax/lint checker
 " Plug 'ludovicchabant/vim-gutentags'
