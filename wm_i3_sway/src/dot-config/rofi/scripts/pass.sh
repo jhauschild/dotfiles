@@ -2,8 +2,8 @@
 
 # based on https://git.zx2c4.com/password-store/tree/contrib/dmenu/passmenu
 # extended by JHauschild to use rofi instead
-# use as `rofi -show power -modi "power:~/.config/rofi/scripts/pass.sh"`
-# `rofi -show power -modi "power:~/.config/rofi/scripts/pass.sh --type"`
+# use as `rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh"`
+# `rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh --type"`
 
 
 shopt -s nullglob globstar

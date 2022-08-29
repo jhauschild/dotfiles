@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+# TODO: get nm-applet to work
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -48,6 +50,7 @@ bindsym $mod+Delete exec rofi -show power -modi "power:~/.config/rofi/scripts/po
 
 # Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
 bindsym Ctrl+$mod+Shift+Prior exec systemctl reboot
 bindsym Ctrl+$mod+Shift+Next exec systemctl poweroff
 bindsym Ctrl+$mod+Shift+Delete exec $lock
@@ -76,8 +79,14 @@ input type:keyboard {
 #
 # Basics:
 #
-    # Start a terminal
+    # custom program shortcuts
     bindsym $mod+Return exec $term
+    bindsym $mod+w exec firefox
+    bindsym $mod+q workspace number 8, exec thunderbird
+    bindsym $mod+e exec nautilus
+    bindsym $mod+c workspace number 9, exec slack, exec element-desktop
+    bindsym Ctrl+$mod+p exec rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh"
+    bindsym Ctrl+Shift+$mod+p exec rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh --type"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -109,6 +118,11 @@ input type:keyboard {
     bindsym $mod+Shift+$down  move down
     bindsym $mod+Shift+$up    move up
     bindsym $mod+Shift+$right move right
+    # Move focus by output 
+    bindsym Ctrl+$mod+$left  focus output left
+    bindsym Ctrl+$mod+$down  focus output down
+    bindsym Ctrl+$mod+$up    focus output up
+    bindsym Ctrl+$mod+$right focus output right
     # Move the workspace window with Ctrl+Mod+Shift+ left/down/up/right
     bindsym Ctrl+$mod+Shift+$left  move workspace to output left
     bindsym Ctrl+$mod+Shift+$down  move workspace to output down
@@ -131,6 +145,10 @@ input type:keyboard {
 #
 # Workspaces:
 #
+    bindsym $mod+Tab workspace next_on_output
+	bindsym Ctrl+$mod+Tab workspace prev_on_output
+    bindsym $mod+Shift+Tab exec '~/.config/sway/bin/new-workspace'
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -142,6 +160,16 @@ input type:keyboard {
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+    bindsym $mod+F1 workspace F1
+    bindsym $mod+F2 workspace F2
+    bindsym $mod+F3 workspace F3
+    bindsym $mod+F4 workspace F4
+    bindsym $mod+F5 workspace F5
+    bindsym $mod+F6 workspace F6
+    bindsym $mod+F7 workspace F7
+    bindsym $mod+F8 workspace F8
+    bindsym $mod+F9 workspace F9
+    bindsym $mod+F10 workspace number F10
     # Move focused container to workspace
     bindsym $mod+Shift+1 move container to workspace number 1
     bindsym $mod+Shift+2 move container to workspace number 2
@@ -153,17 +181,21 @@ input type:keyboard {
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
-
-    bindsym $mod+Tab workspace next_on_output
-    bindsym $mod+Shift+Tab workspace prev_on_output
-    # Note: workspaces can have any name you want, not just numbers.
-    # We just use 1-10 as the default.
-
-    bindsym Ctrl+$mod+Tab workspace new
+    bindsym $mod+Shift+F1 move container to workspace F1
+    bindsym $mod+Shift+F2 move container to workspace F2
+    bindsym $mod+Shift+F3 move container to workspace F3
+    bindsym $mod+Shift+F4 move container to workspace F4
+    bindsym $mod+Shift+F5 move container to workspace F5
+    bindsym $mod+Shift+F6 move container to workspace F6
+    bindsym $mod+Shift+F7 move container to workspace F7
+    bindsym $mod+Shift+F8 move container to workspace F8
+    bindsym $mod+Shift+F9 move container to workspace F9
+    bindsym $mod+Shift+F10 move container to workspace F10
 
 #
 # Layout stuff:
 #
+    workspace_layout tabbed
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
@@ -172,19 +204,21 @@ input type:keyboard {
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+    bindsym $mod+Shift+a focus child
 
     # # Swap focus between the tiling area and the floating area
-    # bindsym $mod+space focus mode_toggle
     # # Switch the current container between different layout styles
     # bindsym $mod+s layout stacking
     # bindsym $mod+w layout tabbed
-    bindsym $mod+Space layout toggle split tabbed stacking splitv splith
+    bindsym $mod+m layout toggle split tabbed
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+f floating toggle
+    # switch between floating and non-floating windows
+    bindsym Ctrl+$mod+f focus mode_toggle
 
 #
 # Scratchpad:
@@ -222,29 +256,13 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
 # Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
+bar swaybar_command waybar
 
 #
 # start some Programs for compatibility
 
 exec /usr/libexec/polkit-gnome-authentication-agent-1 
-
 
 
 include /etc/sway/config.d/*

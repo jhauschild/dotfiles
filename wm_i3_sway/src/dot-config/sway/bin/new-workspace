@@ -1,0 +1,21 @@
+#!/bin/bash
+
+RUNNING="$(swaymsg -p -t get_workspaces | grep Workspace | sed -r "s/Workspace ([[:alnum:]]+) .*/\1/")"
+
+for i in 1 2 3 4 5 6 F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 ;
+do
+	if ! echo "$RUNNING" | grep -q "$i" ; then
+		# echo "new workspace $i"
+		swaymsg "workspace number $i"
+		exit $?
+	fi
+done
+for i in F1 F2 F3 F4 F5 F6 F7 F8 F9 F10 ;
+do
+	if ! echo "$RUNNING" | grep -q "$i" ; then
+		# echo "new workspace $i"
+		swaymsg "workspace $i"
+		exit $?
+	fi
+done
+
