@@ -13,10 +13,23 @@ then
 fi
 
 
+
 case $1 in 
 abort) exit 0;;
-lock) swaylock -c 000000;;
-logout) swaymsg exit ;;
+lock) 
+    if  [[ -n "$WAYLAND_DISPLAY" ]] ; then
+        swaylock -c 000000
+    else
+        loginctl lock-session
+    fi
+    ;;
+logout) 
+    if  [[ -n "$WAYLAND_DISPLAY" ]] ; then
+        swaymsg exit
+    else
+        i3-msg exit
+    fi
+     ;;
 suspend)  systemctl suspend ;;
 hibernate)  systemctl hibernate ;;
 shutdown) systemctl poweroff ;;

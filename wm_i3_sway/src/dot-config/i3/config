@@ -1,13 +1,8 @@
-# Default config for sway
+# Default config for i3
 #
-# Copy this to ~/.config/sway/config and edit it to your liking.
+# Copy this to ~/.config/i3/config and edit it to your liking.
 #
-# Read `man 5 sway` for a complete reference.
-
-# TODO: get nm-applet to work
-# TODO script for adjusting wacom tablet with Ctrl+$mod+Shift+d
-# TODO script for adjusting outputs with Ctrl+$mod+Shift+s
-# TODO: Ctrl+$mod+1 : move to workspace 4 and move there
+# Read `man i3` for a complete reference.
 
 ### Variables
 #
@@ -19,54 +14,24 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term foot
+set $term gnome-terminal
 
 font pango:DejaVu Sans Mono 12
 
-output * bg /usr/share/backgrounds/default.png fill
-output DP-1 resolution 1920x1080 position 0,0
-output eDP-1 resolution 2256x1504 position 0,1080
-output eDP-1 scale 1.5
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+set $lock 'loginctl lock-session'
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-set $lock 'swaylock -f -c 000000'
+bindsym $mod+Delete exec "rofi -show power -modi 'power:~/.config/rofi/scripts/powermenu.sh'"
 
-exec swayidle -w \
-		 timeout 300 $lock \
-		 timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-		 before-sleep $lock
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-bindsym $mod+Delete exec rofi -show power -modi "power:~/.config/rofi/scripts/powermenu.sh"
-
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# Exit i3 (logs you out of your session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym Ctrl+$mod+Shift+Prior exec systemctl reboot
 bindsym Ctrl+$mod+Shift+Next exec systemctl poweroff
 bindsym Ctrl+$mod+Shift+Delete exec $lock
 
-
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-input type:keyboard {
-    xkb_layout us,de
-    xkb_options grp:rctrl_toggle
-}
 
 ### Key bindings
 #
@@ -77,24 +42,23 @@ input type:keyboard {
     bindsym $mod+w exec firefox
     bindsym $mod+q workspace number 8, exec thunderbird
     bindsym $mod+e exec nautilus
-    bindsym $mod+d exec xournalpp
     bindsym $mod+c workspace number 9, exec slack, exec element-desktop
-    bindsym Ctrl+$mod+p exec rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh"
-    bindsym Ctrl+Shift+$mod+p exec rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh --type"
+    bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show power -modi 'power:~/.config/rofi/scripts/pass.sh'"
+    bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show power -modi 'power:~/.config/rofi/scripts/pass.sh --type'"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+p exec rofi -modi "drun,run,ssh" -show drun
-    bindsym $mod+o exec rofi -modi "drun,run,ssh" -show run
+    bindsym $mod+p exec "rofi -modi 'drun,run,ssh' -show drun"
+    bindsym $mod+o exec "rofi -modi 'drun,run,ssh' -show run"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    floating_modifier $mod normal
+    floating_modifier $mod
 
     # Reload the configuration file
     bindsym $mod+Ctrl+Shift+r reload
@@ -193,8 +157,8 @@ input type:keyboard {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+b split h
+    bindsym $mod+v split v
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -220,11 +184,11 @@ input type:keyboard {
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+n move scratchpad
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+Shift+n scratchpad show
+    # # Move the currently focused window to the scratchpad
+    # bindsym $mod+n move scratchpad
+    # # Show the next scratchpad window or hide the focused scratchpad window.
+    # # If there are multiple scratchpad windows, this command cycles through them.
+    # bindsym $mod+Shift+n scratchpad show
 #
 # Resizing containers:
 #
@@ -262,21 +226,21 @@ bindsym $mod+r mode "resize"
     exec light -N 0.1  # set minimal value
     bindsym XF86MonBrightnessUp   exec "light -T 1.6"
     bindsym XF86MonBrightnessDown exec "light -T 0.625"
-
+#
 # Status Bar:
-bar swaybar_command waybar
+# bar {
+#         status_command polybar
+# }
+exec --no-startup-id polybar
 
-
-
-include /etc/sway/config.d/*
 
 # 
 # Autostart
 # 
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id 'dex-autostart --autostart --environment i3'
+exec --no-startup-id dex-autostart --autostart --environment i3
 
-# finally, start firefox on ws 7
-workspace 7
-exec firefox
+# # finally, start firefox on ws 7
+exec --no-startup-id sleep 1 && i3-msg 'workspace number 7' && firefox

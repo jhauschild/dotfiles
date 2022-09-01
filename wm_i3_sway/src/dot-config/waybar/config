@@ -1,13 +1,13 @@
 [{
     "output": "!eDP-1",  // all other outputs
     // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "position": "bottom", // Waybar position (top|bottom|left|right)
     "height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 2, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": [ ],
     "modules-right": [//"mpd", "temperature", "backlight", "keyboard-state", "memory", "battery#bat2", 
             // "idle_inhibitor", "pulseaudio", "network", "cpu", "sway/language", "battery", 
             "clock"],
@@ -28,6 +28,7 @@
 },
 {
     "output": "eDP-1",
+    "position": "bottom", // Waybar position (top|bottom|left|right)
     "spacing": 2, // Gaps between modules (in pixel)
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
@@ -69,7 +70,8 @@
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10
+        "spacing": 10,
+        "show-passive-items": true
     },
     "clock": {
         // "timezone": "America/New_York",
@@ -108,8 +110,8 @@
         "format-charging": "{capacity}% +",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
-        "format-good": "{capacity}% ", // An empty format will hide the module
-        "format-full": "",
+        "format-good": "{capacity}% ",
+        "format-full": "", // An empty format will hide the module
         "format-icons": ["", "", "", "", ""]
     },
     "battery#bat2": {
@@ -127,15 +129,15 @@
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "{icon}  {format_source}",
+        "format-muted": " {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            /* "hands-free": "", */
+            /* "headset": "", */
             "phone": "",
             "portable": "",
             "car": "",

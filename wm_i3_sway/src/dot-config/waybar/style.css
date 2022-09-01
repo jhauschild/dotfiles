@@ -75,7 +75,7 @@ window#waybar.chromium {
 #network,
 #pulseaudio,
 #custom-media,
-#tray,
+/* #tray, */
 #mode,
 #language,
 #idle_inhibitor,
@@ -192,20 +192,18 @@ label:focus {
 /*     background-color: #eb4d4b; */
 /* }                              */
 
-/* #tray {                        */
-/*     background-color: #2980b9; */
-/* }                              */
+#tray {                       
+	background-color: #2980b9;
+}                             
 
-/*
- * #tray > .passive {              
- *     -gtk-icon-effect: dim;      
- * }                               
- * 
- * #tray > .needs-attention {      
- *     -gtk-icon-effect: highlight;
- *     background-color: #eb4d4b;  
- * }                               
- */
+#tray > .passive {              
+	-gtk-icon-effect: dim;      
+}                               
+
+#tray > .needs-attention {      
+	-gtk-icon-effect: highlight;
+	background-color: #eb4d4b;  
+}                               
 
 /*
  * #idle_inhibitor {
