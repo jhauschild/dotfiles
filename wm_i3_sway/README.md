@@ -11,7 +11,7 @@ Fedora:
 ```bash
 sudo dnf install \
 	dmenu rofi  \
-	i3 polybar xset xdotool \
+	i3 polybar xset xdotool nitrogen \
 	sway wtype waybar \
 ```
 

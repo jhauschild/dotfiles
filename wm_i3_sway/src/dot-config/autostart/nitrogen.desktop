@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/usr/bin/nitrogen
+Name=nitrogen
+Comment=X11 background previewer and setter
+Type=Application
+OnlyShowIn=i3
