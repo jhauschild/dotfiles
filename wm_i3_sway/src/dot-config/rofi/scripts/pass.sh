@@ -41,6 +41,6 @@ fi
 if [[ $typeit -eq 0 ]]; then
 	coproc ( pass show -c "$password" &>/dev/null )
 else
-	coproc ( sleep 1 && pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | $TYPE -  )
+	coproc ( pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | $TYPE -  )
 fi
 exit 0
