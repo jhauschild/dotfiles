@@ -20,6 +20,9 @@ window#waybar.hidden {
 window#waybar.empty {             
 	background-color: transparent;
 }                                 
+window#waybar.urgent {             
+	background-color: #EB4D4B;
+}                                 
 /* window#waybar.solo {           */
 /*     background-color: #FFFFFF; */
 /* }                              */

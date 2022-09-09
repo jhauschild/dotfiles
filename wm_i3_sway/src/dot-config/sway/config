@@ -33,9 +33,7 @@ exec swayidle -w \
 		 timeout 300 $lock \
 		 timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
 		 before-sleep $lock
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+# This will lock the screen after idle time and after suspend
 
 bindsym $mod+Delete exec rofi -show power -modi "power:~/.config/rofi/scripts/powermenu.sh"
 
@@ -77,22 +75,19 @@ input type:keyboard {
     bindsym $mod+e exec nautilus
     bindsym $mod+d exec xournalpp
     bindsym $mod+c workspace number 9, exec slack, exec element-desktop
-    bindsym Ctrl+$mod+p exec rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh"
-    bindsym Ctrl+Shift+$mod+p exec rofi -matching fuzzy -show power -modi "power:~/.config/rofi/scripts/pass.sh --type"
+    bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
+    bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show pass -modi 'power:~/.config/rofi/scripts/pass.sh --type'"
+
+    bindsym Ctrl+Shift+$mod+s exec "arandr"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+p exec rofi -modi "drun,run,ssh" -show drun
-    bindsym $mod+o exec rofi -modi "drun,run,ssh" -show run
+    bindsym $mod+p exec "rofi -modi 'drun,run,ssh' -show drun"
+    bindsym $mod+o exec "rofi -modi 'drun,run,ssh' -show run"
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    floating_modifier $mod normal
+    floating_modifier $mod
 
     # Reload the configuration file
     bindsym Ctrl+$mod+Shift+r reload
@@ -139,7 +134,7 @@ input type:keyboard {
 #
     bindsym $mod+Tab workspace next_on_output
     bindsym $mod+Shift+Tab workspace prev_on_output
-    bindsym Ctrl+$mod+Tab exec '~/.config/sway/bin/new-workspace'
+    bindsym Ctrl+$mod+Tab exec new-workspace
 
     # Switch to workspace
     bindsym $mod+1 workspace number 1
@@ -212,8 +207,8 @@ input type:keyboard {
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+b split h
+    bindsym $mod+v split v
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -229,9 +224,9 @@ input type:keyboard {
     bindsym $mod+f fullscreen toggle
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+f floating toggle
+    bindsym $mod+Space floating toggle
     # switch between floating and non-floating windows
-    bindsym Ctrl+$mod+f focus mode_toggle
+    bindsym $mod+Shift+Space focus mode_toggle
 
 #
 # Scratchpad:
@@ -292,10 +287,11 @@ include /etc/sway/config.d/*
 # 
 # Autostart
 # 
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id 'dex-autostart --autostart --environment i3'
+exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
 
 # finally, start firefox on ws 7
-workspace 7
-exec firefox
+exec --no-startup-id sleep 1 && i3-msg 'workspace number 7' && firefox

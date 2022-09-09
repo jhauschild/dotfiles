@@ -21,7 +21,9 @@ font pango:DejaVu Sans Mono 12
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 set $lock 'loginctl lock-session'
+
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# This will lock the screen after idle time and after suspend
 
 bindsym $mod+Delete exec "rofi -show power -modi 'power:~/.config/rofi/scripts/powermenu.sh'"
 
@@ -44,8 +46,10 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym $mod+e exec nautilus
     bindsym $mod+d exec xournalpp
     bindsym $mod+c workspace number 9, exec slack, exec element-desktop
-    bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show power -modi 'power:~/.config/rofi/scripts/pass.sh'"
-    bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show power -modi 'power:~/.config/rofi/scripts/pass.sh --type'"
+    bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
+    bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show pass -modi 'power:~/.config/rofi/scripts/pass.sh --type'"
+
+    bindsym Ctrl+Shift+$mod+s exec "arandr"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -54,11 +58,6 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym $mod+p exec "rofi -modi 'drun,run,ssh' -show drun"
     bindsym $mod+o exec "rofi -modi 'drun,run,ssh' -show run"
 
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
     floating_modifier $mod
 
     # Reload the configuration file
@@ -106,7 +105,7 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
 #
     bindsym $mod+Tab workspace next_on_output
     bindsym $mod+Shift+Tab workspace prev_on_output
-    bindsym Ctrl+$mod+Tab exec '~/.config/sway/bin/new-workspace'
+    bindsym Ctrl+$mod+Tab exec new-workspace
 
     # Switch to workspace
     bindsym $mod+1 workspace number 1
@@ -196,9 +195,9 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym $mod+f fullscreen toggle
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+f floating toggle
+    bindsym $mod+space floating toggle
     # switch between floating and non-floating windows
-    bindsym Ctrl+$mod+f focus mode_toggle
+    bindsym $mod+Shift+space focus mode_toggle
 
 #
 # Scratchpad:
@@ -206,11 +205,11 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
-    # # Move the currently focused window to the scratchpad
-    # bindsym $mod+n move scratchpad
-    # # Show the next scratchpad window or hide the focused scratchpad window.
-    # # If there are multiple scratchpad windows, this command cycles through them.
-    # bindsym $mod+Shift+n scratchpad show
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+n move scratchpad
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+Shift+n scratchpad show
 #
 # Resizing containers:
 #
@@ -248,7 +247,7 @@ bindsym $mod+r mode "resize"
     exec light -N 0.1  # set minimal value
     bindsym XF86MonBrightnessUp   exec "light -T 1.6"
     bindsym XF86MonBrightnessDown exec "light -T 0.625"
-#
+
 # Status Bar:
 # bar {
 #         status_command polybar
@@ -263,6 +262,7 @@ exec --no-startup-id polybar
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
 
-# # finally, start firefox on ws 7
+# finally, start firefox on ws 7
 exec --no-startup-id sleep 1 && i3-msg 'workspace number 7' && firefox
