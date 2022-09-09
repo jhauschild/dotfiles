@@ -78,7 +78,7 @@ input type:keyboard {
     bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
     bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show pass -modi 'power:~/.config/rofi/scripts/pass.sh --type'"
 
-    bindsym Ctrl+Shift+$mod+s exec "arandr"
+    bindsym Ctrl+Shift+$mod+s exec "wdisplays"
 
     # Kill focused window
     bindsym $mod+Shift+q kill

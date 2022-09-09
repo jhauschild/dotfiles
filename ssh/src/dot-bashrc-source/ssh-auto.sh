@@ -29,13 +29,13 @@ ssh-auto-add () {
             echo "found no working socket, start a new ssh-agent"
             eval "$(ssh-agent -t 43200 -s)"  # 12 hours...
         fi
-        # should have a working SSH_AUTH_SOCK now...
-        if [[ -n "$SSH_AUTH_SOCK_LINK" && "$SSH_AUTH_SOCK" != "$SSH_AUTH_SOCK_LINK" ]]
-        then
-            echo "use $SSH_AUTH_SOCK as $SSH_AUTH_SOCK_LINK"
-            test -L "$SSH_AUTH_SOCK_LINK" && \rm $SSH_AUTH_SOCK_LINK
-            ln -s "$SSH_AUTH_SOCK" "$SSH_AUTH_SOCK_LINK"
-        fi
+    fi
+    # should have a working SSH_AUTH_SOCK now...
+    if [[ ! -S "$SSH_AUTH_SOCK_LINK" ]]
+    then
+        echo "use $SSH_AUTH_SOCK as $SSH_AUTH_SOCK_LINK"
+        test -L "$SSH_AUTH_SOCK_LINK" && /usr/bin/rm "$SSH_AUTH_SOCK_LINK"
+        ln -s "$SSH_AUTH_SOCK" "$SSH_AUTH_SOCK_LINK"
     fi
     export SSH_AUTH_SOCK
     ssh-add -l &> /dev/null
