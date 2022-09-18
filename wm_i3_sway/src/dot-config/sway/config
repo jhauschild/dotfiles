@@ -5,7 +5,6 @@
 # Read `man 5 sway` for a complete reference.
 
 # TODO script for adjusting wacom tablet with Ctrl+$mod+Shift+d
-# TODO script for adjusting outputs with Ctrl+$mod+Shift+s
 
 ### Variables
 #
@@ -35,15 +34,14 @@ exec swayidle -w \
 		 before-sleep $lock
 # This will lock the screen after idle time and after suspend
 
-bindsym $mod+Delete exec rofi -show power -modi "power:~/.config/rofi/scripts/powermenu.sh"
+bindsym $mod+Delete exec "rofi -show power -modi 'power:~/.config/rofi/scripts/powermenu.sh'"
 
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+# Exit (logs you out of your session)
+bindsym Ctrl+$mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 bindsym Ctrl+$mod+Shift+Prior exec systemctl reboot
 bindsym Ctrl+$mod+Shift+Next exec systemctl poweroff
 bindsym Ctrl+$mod+Shift+Delete exec $lock
-
 
 
 ### Input configuration
@@ -68,15 +66,16 @@ input type:keyboard {
 #
 # Basics:
 #
-    # custom program shortcuts
+    # custom application shortcuts
     bindsym $mod+Return exec $term
     bindsym $mod+w exec firefox
     bindsym $mod+q workspace number 8, exec thunderbird
     bindsym $mod+e exec nautilus
     bindsym $mod+d exec xournalpp
+    bindsym $mod+t workspace -, exec "flatpak run org.gnome.GTG"
     bindsym $mod+c workspace number 9, exec slack, exec element-desktop
     bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
-    bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show pass -modi 'power:~/.config/rofi/scripts/pass.sh --type'"
+    bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh --type'"
 
     bindsym Ctrl+Shift+$mod+s exec "wdisplays"
 
@@ -134,7 +133,7 @@ input type:keyboard {
 #
     bindsym $mod+Tab workspace next_on_output
     bindsym $mod+Shift+Tab workspace prev_on_output
-    bindsym Ctrl+$mod+Tab exec new-workspace
+    bindsym $mod+grave exec ~/bin/new-workspace
 
     # Switch to workspace
     bindsym $mod+1 workspace number 1
@@ -147,6 +146,7 @@ input type:keyboard {
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+    bindsym $mod+Minus workspace -
     bindsym $mod+F1 workspace F1
     bindsym $mod+F2 workspace F2
     bindsym $mod+F3 workspace F3
@@ -168,6 +168,7 @@ input type:keyboard {
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+Minus move container to workspace -
     bindsym $mod+Shift+F1 move container to workspace F1
     bindsym $mod+Shift+F2 move container to workspace F2
     bindsym $mod+Shift+F3 move container to workspace F3
@@ -189,6 +190,7 @@ input type:keyboard {
     bindsym Ctrl+$mod+8 move container to workspace number 8, workspace number 8
     bindsym Ctrl+$mod+9 move container to workspace number 9, workspace number 9
     bindsym Ctrl+$mod+0 move container to workspace number 10, workspace number 1
+    bindsym Ctrl+$mod+minus move container to workspace -, workspace -
     bindsym Ctrl+$mod+F1 move container to workspace F1, workspace F1
     bindsym Ctrl+$mod+F2 move container to workspace F2, workspace F2
     bindsym Ctrl+$mod+F3 move container to workspace F3, workspace F3
@@ -290,7 +292,7 @@ include /etc/sway/config.d/*
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id dex-autostart --autostart --environment sway
 exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
 
 # finally, start firefox on ws 7

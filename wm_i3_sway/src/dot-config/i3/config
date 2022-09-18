@@ -20,15 +20,15 @@ font pango:DejaVu Sans Mono 12
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-set $lock 'loginctl lock-session'
+set $lock loginctl lock-session
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # This will lock the screen after idle time and after suspend
 
 bindsym $mod+Delete exec "rofi -show power -modi 'power:~/.config/rofi/scripts/powermenu.sh'"
 
-# Exit i3 (logs you out of your session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# Exit (logs you out of your session)
+bindsym Ctrl+$mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 bindsym Ctrl+$mod+Shift+Prior exec systemctl reboot
 bindsym Ctrl+$mod+Shift+Next exec systemctl poweroff
@@ -39,15 +39,16 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
 #
 # Basics:
 #
-    # custom program shortcuts
+    # custom application shortcuts
     bindsym $mod+Return exec $term
     bindsym $mod+w exec firefox
     bindsym $mod+q workspace number 8, exec thunderbird
     bindsym $mod+e exec nautilus
     bindsym $mod+d exec xournalpp
+    bindsym $mod+t workspace -, exec "flatpak run org.gnome.GTG"
     bindsym $mod+c workspace number 9, exec slack, exec element-desktop
-    bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
-    bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show pass -modi 'power:~/.config/rofi/scripts/pass.sh --type'"
+    bindsym Ctrl+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
+    bindsym Ctrl+Shift+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh --type'"
 
     bindsym Ctrl+Shift+$mod+s exec "arandr"
 
@@ -55,8 +56,8 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+p exec "rofi -modi 'drun,run,ssh' -show drun"
-    bindsym $mod+o exec "rofi -modi 'drun,run,ssh' -show run"
+    bindsym $mod+p --release exec "rofi -modi 'drun,run,ssh' -show drun"
+    bindsym $mod+o --release exec "rofi -modi 'drun,run,ssh' -show run"
 
     floating_modifier $mod
 
@@ -105,7 +106,7 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
 #
     bindsym $mod+Tab workspace next_on_output
     bindsym $mod+Shift+Tab workspace prev_on_output
-    bindsym Ctrl+$mod+Tab exec new-workspace
+    bindsym $mod+grave exec ~/bin/new-workspace
 
     # Switch to workspace
     bindsym $mod+1 workspace number 1
@@ -118,6 +119,7 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+    bindsym $mod+minus workspace -
     bindsym $mod+F1 workspace F1
     bindsym $mod+F2 workspace F2
     bindsym $mod+F3 workspace F3
@@ -139,6 +141,7 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym $mod+Shift+8 move container to workspace number 8
     bindsym $mod+Shift+9 move container to workspace number 9
     bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+minus move container to workspace -
     bindsym $mod+Shift+F1 move container to workspace F1
     bindsym $mod+Shift+F2 move container to workspace F2
     bindsym $mod+Shift+F3 move container to workspace F3
@@ -160,6 +163,7 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym Ctrl+$mod+8 move container to workspace number 8, workspace number 8
     bindsym Ctrl+$mod+9 move container to workspace number 9, workspace number 9
     bindsym Ctrl+$mod+0 move container to workspace number 10, workspace number 1
+    bindsym Ctrl+$mod+minus move container to workspace -, workspace -
     bindsym Ctrl+$mod+F1 move container to workspace F1, workspace F1
     bindsym Ctrl+$mod+F2 move container to workspace F2, workspace F2
     bindsym Ctrl+$mod+F3 move container to workspace F3, workspace F3
@@ -247,12 +251,11 @@ bindsym $mod+r mode "resize"
     exec light -N 0.1  # set minimal value
     bindsym XF86MonBrightnessUp   exec "light -T 1.6"
     bindsym XF86MonBrightnessDown exec "light -T 0.625"
-
 # Status Bar:
 # bar {
 #         status_command polybar
 # }
-exec --no-startup-id polybar
+exec --no-startup-id ~/.config/polybar/multi-monitor-startup.sh
 
 
 # 

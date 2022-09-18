@@ -29,18 +29,18 @@ password="$1"
 
 [[ -n "$password" ]] || exit 0
 
-if  [[ -n "$WAYLAND_DISPLAY" ]] ; then
-TYPE="wtype"
-else
-TYPE="xdotool type --clearmodifiers --file "
-fi
 if [[ "$GPG_TTY" == "not a tty" ]] ; then
-export "GPG_TTY=/dev/pts/0"
+export GPG_TTY="/dev/pts/0"
 fi
 
 if [[ $typeit -eq 0 ]]; then
 	coproc ( pass show -c "$password" &>/dev/null )
 else
-	coproc ( pass show "$password" | { IFS= read -r pass; printf %s "$pass"; } | $TYPE -  )
+	if  [[ -n "$WAYLAND_DISPLAY" ]] ; 
+	then
+		coproc ( pass show "$password" | head -n 1 | wtype -  )
+	else
+		coproc ( pass show "$password" | head -n 1 | xdotool type --clearmodifiers --file - )
+	fi
 fi
 exit 0
