@@ -288,12 +288,28 @@ let g:pymode_trim_whitespace = 0
 
 " ---------------------------------------------------------
 " latex-suite
-let g:Tex_CompileRule_pdf="lualatex -interaction=nonstopmode -synctex=1 -src-specials --shell-escape $*"
+" let g:Tex_CompileRule_pdf="lualatex -interaction=nonstopmode -synctex=1 -src-specials --shell-escape $*"
 " let g:Tex_DefaultTargetFormat='pdf'
 " let g:Tex_ViewRule_pdf = 'okular --unique'
 " ---------------------------------------------------------
 " vimtex for latex
 let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_latexmk = {
+	\ 'build_dir' : '',
+	\ 'callback' : 1,
+	\ 'continuous' : 1,
+	\ 'executable' : 'latexmk',
+	\ 'hooks' : [],
+	\ 'options' : [
+	\   '-verbose',
+	\   '-file-line-error',
+	\   '-shell-escape',
+	\   '-synctex=1',
+	\   '-interaction=nonstopmode',
+	\ ],
+	\}
+
+
 
 " ---------------------------------------------------------
 " firenvim

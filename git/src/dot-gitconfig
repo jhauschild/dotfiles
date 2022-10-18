@@ -21,6 +21,8 @@
 [push]
 	default = simple
 	recurseSubmodules = check
+	autoSetupRemote = true
+
 [diff "pdfdiff"]
 	command = diffpdf
 [diff "jupyternotebook"]

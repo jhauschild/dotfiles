@@ -3,14 +3,19 @@ if exists("b:did_joghurts_tex_ftplugin")
   finish
 endif
 " more text in one row
-setlocal textwidth=120
+setlocal textwidth=0
+setlocal wrap
+" map j to gj and k to gk, so line navigation ignores line wrap
+nmap j gj
+nmap k gk
 
 " less indent, used in formulas etc
 set tabstop=4
 
-" map j to gj and k to gk, so line navigation ignores line wrap
-"nmap j gj
-"nmap k gk
+" -- folding with vimtex for sections etc
+set foldmethod=expr
+set foldexpr=vimtex#fold#level(v:lnum)
+set foldtext=vimtex#fold#text()
 
 
 
