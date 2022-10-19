@@ -50,7 +50,8 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym Ctrl+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
     bindsym Ctrl+Shift+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh --type'"
 
-    bindsym Ctrl+Shift+$mod+s exec "arandr"
+    bindsym Ctrl+Shift+$mod+s exec "arandr && .config/polybar/multi-monitor-startup.sh"
+    bindsym Ctrl+Shift+$mod+d --release exec "rofi -matching fuzzy -show wacom -modi 'wacom:~/.config/rofi/scripts/wacom.py'"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -107,6 +108,8 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym $mod+Tab workspace next_on_output
     bindsym $mod+Shift+Tab workspace prev_on_output
     bindsym $mod+grave exec ~/bin/new-workspace
+    bindsym $mod+Shift+grave exec ~/bin/new-workspace -m
+    bindsym Ctrl+$mod+grave exec ~/bin/new-workspace -m -g
 
     # Switch to workspace
     bindsym $mod+1 workspace number 1

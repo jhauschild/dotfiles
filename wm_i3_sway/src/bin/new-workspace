@@ -8,18 +8,33 @@ import os
 binary = 'swaymsg' if 'WAYLAND_DISPLAY' in os.environ else 'i3-msg'
 
 
-def main():
-    if len(sys.argv) > 1:
-        name = sys.argv[1]
+def handle_args(move=False, go=None):
+    for arg in sys.argv[1:]:
+        if arg.startswith('-'):
+            if arg in ['-h', '--help']:
+                print(sys.argv[0], ' [-h] [-m] [-g] [workspace_name]')
+                print(' -h  --help    : print this help message')
+                print(' -m  --move    : move container to workspace.')
+                print(' -g  --go      : Also go to workspace after moving container.')
+                print('workspace_name : defaults to new name in 1-10,F1-F10,11-30')
+                sys.exit(0)
+            elif arg in ['-m', '--move']:
+                move = True
+                if go is None:
+                    go = False
+            elif arg in ['-g', '--go']:
+                go = True
+            else:
+                raise ValueError("Unknown options!")
+    if go is None:
+        go = True
+    assert move or go # should do at least one option
+
+    if len(sys.argv) > 1 and not sys.argv[-1].startswith('-'):
+        name = sys.argv[-1]
     else:
         name = get_unused_workspace_name()
-    try:
-        int(name)
-        cmd = [binary, 'workspace', 'number', name]
-    except ValueError:
-        cmd = [binary, 'workspace', name]
-    res = subprocess.run(cmd, capture_output=True)
-    sys.exit(res.returncode)
+    return move, go, name
 
 
 def get_unused_workspace_name():
@@ -40,6 +55,26 @@ def get_unused_workspace_name():
         if n not in ws_names:
             return n
     raise ValueError("apparently alreay got all the workspaces?!?")
+
+
+def main():
+    move, go, name = handle_args()
+    print(move, go, name)
+    try:
+        int(name)
+        ws =  ['number', name]
+    except ValueError:
+        ws = [name]
+    cmd_mv = [binary, 'move', 'container', 'to', 'workspace'] + ws
+    cmd_go = [binary, 'workspace'] + ws
+    if move:
+        res = subprocess.run(cmd_mv)
+        if not res.returncode == 0:
+            print(res)
+            raise ValueError("Subprocess failed")
+    if go:
+        res = subprocess.run(cmd_go)
+    sys.exit(res.returncode)
 
 
 if __name__ == "__main__":
