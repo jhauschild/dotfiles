@@ -15,3 +15,11 @@ sudo dnf install \
 	sway wtype waybar \
 ```
 
+Ubuntu: 
+```bash
+sudo dnf install \
+	dmenu rofi  \
+	i3 polybar x11-xserver-utils nitrogen \
+	sway wtype waybar \
+```
+
