@@ -32,7 +32,10 @@ bindsym Ctrl+$mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit sh
 
 bindsym Ctrl+$mod+Shift+Prior exec systemctl reboot
 bindsym Ctrl+$mod+Shift+Next exec systemctl poweroff
+# lock screen
 bindsym Ctrl+$mod+Shift+Delete exec $lock
+# logout
+bindsym Ctrl+$mod+Shift+Home exit  
 
 
 ### Key bindings
@@ -51,6 +54,7 @@ bindsym Ctrl+$mod+Shift+Delete exec $lock
     bindsym Ctrl+Shift+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh --type'"
 
     bindsym Ctrl+Shift+$mod+s exec "arandr && .config/polybar/multi-monitor-startup.sh"
+    bindsym Ctrl+$mod+s --release exec "rofi -matching fuzzy -show screenlayout -modi 'screenlayout:~/.config/rofi/scripts/screenlayouts.sh'  && .config/polybar/multi-monitor-startup.sh"
     bindsym Ctrl+Shift+$mod+d --release exec "rofi -matching fuzzy -show wacom -modi 'wacom:~/.config/rofi/scripts/wacom.py'"
 
     # Kill focused window
