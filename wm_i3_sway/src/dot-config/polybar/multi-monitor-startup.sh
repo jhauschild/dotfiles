@@ -10,5 +10,5 @@ fi
 sleep 1
 
 for m in $(polybar --list-monitors | cut -d":" -f1); do
-    MONITOR=$m polybar --reload bottom &
+    MONITOR=$m polybar --reload -c $HOME/.config/polybar/config.ini bottom &
 done
