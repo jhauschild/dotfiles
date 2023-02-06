@@ -2,7 +2,7 @@
 # written by Johannes Hauschild, MIT LICENSE
 
 # usage: add the following two lines in your ~/.bashrc:
-SSH_AUTH_SOCK_LINK="$HOME/.ssh-auth-sock"
+SSH_AUTH_SOCK_LINK="$HOME/.ssh_auth_sock"
 test -z "$SSH_AUTH_SOCK" && export SSH_AUTH_SOCK=$SSH_AUTH_SOCK_LINK
 
 ssh-auto-add () {
