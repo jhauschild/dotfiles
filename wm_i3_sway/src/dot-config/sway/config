@@ -28,11 +28,11 @@ output eDP-1 scale 1.5
 
 set $lock 'swaylock -f -c 000000'
 
-exec swayidle -w \
-		 timeout 300 $lock \
-		 timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-		 before-sleep $lock
-# This will lock the screen after idle time and after suspend
+exec swayidle -w -C 
+# This will lock the screen after idle time and after suspend as specified in config
+#	timeout 300 $lock \
+#	timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#	before-sleep $lock
 
 bindsym $mod+Delete exec "rofi -show power -modi 'power:~/.config/rofi/scripts/powermenu.sh'"
 
