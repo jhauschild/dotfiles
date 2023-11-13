@@ -38,6 +38,7 @@ call plug#begin('~/.config/nvim/plugged')
 " global vim behaviour
 " ---------------------------------------------------------
 Plug 'junegunn/vim-plug'  " this provides help commands for vim-plug
+Plug 'tyjak/vim-redact-pass' " pass edit without leaking to swap files
 Plug 'mhinz/vim-startify'  " start screen
 Plug 'vim-airline/vim-airline'  " fancy status bar
 Plug 'sjl/gundo.vim' " Undo tree
@@ -91,6 +92,7 @@ Plug 'tpope/vim-fugitive'   " integration of git commands
 " ---------------------------------------------------------
 "Plug 'vim-latex/vim-latex', {'for': 'tex'} " Latex-Suite
 Plug 'lervag/vimtex', {'for': 'tex'}  " Latex tools
+ 
 Plug 'JuliaEditorSupport/julia-vim', {'for': 'julia'} " Julia support; insert unicode characters
 Plug 'python-mode/python-mode', {'for': 'python'} " pymode
 
@@ -271,9 +273,9 @@ let g:latex_to_unicode_keymap = 1
 " ---------------------------------------------------------
 " python-mode
 let g:pymode_python = 'python3'
-" select features i want:
+" select features I want:
 let g:pymode_indent = 1
-let g:pymode_folding = 0  " slow!
+let g:pymode_folding = 0
 let g:pymode_motion = 1
 let g:pymode_doc = 0
 let g:pymode_virtualenv = 0
