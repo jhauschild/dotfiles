@@ -2,16 +2,16 @@
 
 if [ $# == 0 ]
 then
-	echo -e "lock"
-	echo -e "disable-idle-lock"
-	echo -e "enable-idle-lock"
-	echo -e "logout"
-	echo -e "suspend"
-	echo -e "hibernate"
-	echo -e "shutdown"
-	echo -e "reboot"
-	echo -e "abort"
-	exit 0
+    echo -e "lock"
+    echo -e "disable-idle-lock"
+    echo -e "enable-idle-lock"
+    echo -e "logout"
+    echo -e "suspend"
+    echo -e "hibernate"
+    echo -e "shutdown"
+    echo -e "reboot"
+    echo -e "abort"
+    exit 0
 fi
 
 
@@ -30,6 +30,7 @@ disable-idle-lock)
         swayidle -w -C
     else
         xset s off
+        xset -dpms
     fi
     ;;
 enable-idle-lock)
@@ -37,6 +38,7 @@ enable-idle-lock)
         swayidle -w -C
     else
         xset s on
+        xset +dpms
     fi
     ;;
 logout) 

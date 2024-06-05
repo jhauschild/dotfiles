@@ -22,7 +22,7 @@ font pango:DejaVu Sans Mono 12
 # screen before suspend. Use loginctl lock-session to lock your screen.
 set $lock loginctl lock-session
 
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # This will lock the screen after idle time and after suspend
 
 bindsym $mod+Delete exec "rofi -show power -modi 'power:~/.config/rofi/scripts/powermenu.sh'"
@@ -49,7 +49,7 @@ bindsym Ctrl+$mod+Shift+Home exit
     bindsym $mod+e exec nautilus
     bindsym $mod+d exec xournalpp
     bindsym $mod+t workspace -, exec "flatpak run org.gnome.GTG"
-    bindsym $mod+c workspace number 9, exec "flatpak run com.slack.Slack", exec "flatpak run im.riot.Riot"
+    bindsym $mod+c workspace number , exec "flatpak run im.riot.Riot"
     bindsym Ctrl+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
     bindsym Ctrl+Shift+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh --type'"
 
