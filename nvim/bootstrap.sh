@@ -2,25 +2,25 @@
 
 set -e
 
-source ../python/src/dot-bashrc-source/conda_setup.sh
-
-if conda env list | grep neovim-py3 
-then
-	echo "neovim env already found"
-else
-	conda env create -f environment_py3.yml
-	#conda env create -f environment_py2.yml
-fi
-
-source activate neovim-py3
-FROM="$HOME/bin/nvr"
-TARGET="$(which nvr)"
-if [ \( ! -e "$FROM" \) -a -x "$(which nvr)" -a "$(which nvr)" != "$FROM" ]
-then
-	echo "create link for nvr"
-	ln -s $(which nvr) "$FROM"
-fi
-source deactivate
+#source ../python/src/dot-bashrc-source/conda_setup.sh
+#
+#if conda env list | grep neovim-py3 
+#then
+#	echo "neovim env already found"
+#else
+#	conda env create -f environment_py3.yml
+#	#conda env create -f environment_py2.yml
+#fi
+#
+#source activate neovim-py3
+#FROM="$HOME/bin/nvr"
+#TARGET="$(which nvr)"
+#if [ \( ! -e "$FROM" \) -a -x "$(which nvr)" -a "$(which nvr)" != "$FROM" ]
+#then
+#	echo "create link for nvr"
+#	ln -s $(which nvr) "$FROM"
+#fi
+#source deactivate
 
 
 DIR="$(realpath $(dirname $0))"

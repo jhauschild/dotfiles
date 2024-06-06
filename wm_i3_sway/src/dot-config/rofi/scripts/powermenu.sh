@@ -20,6 +20,7 @@ lock)
     if  [[ -n "$WAYLAND_DISPLAY" ]] ; then
         swaylock -c 000000
     else
+        setxkbmap -layout us,de -option grp:rctrl_toggle
         loginctl lock-session
     fi
     ;;

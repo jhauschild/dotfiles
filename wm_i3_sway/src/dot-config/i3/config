@@ -20,7 +20,7 @@ font pango:DejaVu Sans Mono 12
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-set $lock loginctl lock-session
+set $lock "setxkbmap -layout us,de -option grp:rctrl_toggle && loginctl lock-session"
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # This will lock the screen after idle time and after suspend
@@ -49,7 +49,7 @@ bindsym Ctrl+$mod+Shift+Home exit
     bindsym $mod+e exec nautilus
     bindsym $mod+d exec xournalpp
     bindsym $mod+t workspace -, exec "flatpak run org.gnome.GTG"
-    bindsym $mod+c workspace number 9, exec "flatpak run com.slack.Slack", exec "flatpak run im.riot.Riot"
+    bindsym $mod+c workspace number 9, exec "firefox --new-window https://app.element.io"
     bindsym Ctrl+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
     bindsym Ctrl+Shift+$mod+p --release exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh --type'"
 
@@ -262,6 +262,7 @@ bindsym $mod+r mode "resize"
 # bar {
 #         status_command polybar
 # }
+exec --no-startup-id ~/.screenlayout/i3-startup.sh
 exec --no-startup-id ~/.config/polybar/multi-monitor-startup.sh
 
 
@@ -271,8 +272,8 @@ exec --no-startup-id ~/.config/polybar/multi-monitor-startup.sh
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex-autostart --autostart --environment i3
-exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
+exec --no-startup-id dex --autostart --environment i3
+# exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
 
 # finally, start firefox on ws 7
 exec --no-startup-id sleep 1 && i3-msg 'workspace number 7' && firefox
