@@ -22,17 +22,17 @@ font pango:DejaVu Sans Mono 12
 
 output * bg /usr/share/backgrounds/default.png fill
 output DP-1 resolution 1920x1080 position 0,0
-output eDP-1 resolution 2256x1504 position 0,1080
+output eDP-1 resolution 2256x1504 position 1920,0
 output eDP-1 scale 1.5
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
 set $lock 'swaylock -f -c 000000'
 
-exec swayidle -w \
-		 timeout 300 $lock \
-		 timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-		 before-sleep $lock
-# This will lock the screen after idle time and after suspend
+exec swayidle -w -C 
+# This will lock the screen after idle time and after suspend as specified in config
+#	timeout 300 $lock \
+#	timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+#	before-sleep $lock
 
 bindsym $mod+Delete exec "rofi -show power -modi 'power:~/.config/rofi/scripts/powermenu.sh'"
 
@@ -41,8 +41,10 @@ bindsym Ctrl+$mod+Shift+e exec swaynag -t warning -m 'You pressed the exit short
 
 bindsym Ctrl+$mod+Shift+Prior exec systemctl reboot
 bindsym Ctrl+$mod+Shift+Next exec systemctl poweroff
+# lock screen
 bindsym Ctrl+$mod+Shift+Delete exec $lock
-
+# logout
+bindsym Ctrl+$mod+Shift+Home exit  
 
 ### Input configuration
 #
@@ -74,11 +76,13 @@ input type:keyboard {
     bindsym $mod+e exec nautilus
     bindsym $mod+d exec xournalpp
     bindsym $mod+t workspace -, exec "flatpak run org.gnome.GTG"
-    bindsym $mod+c workspace number 9, exec slack, exec element-desktop
+    bindsym $mod+c workspace number , exec "flatpak run im.riot.Riot"
     bindsym Ctrl+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh'"
     bindsym Ctrl+Shift+$mod+p exec "rofi -matching fuzzy -show pass -modi 'pass:~/.config/rofi/scripts/pass.sh --type'"
 
     bindsym Ctrl+Shift+$mod+s exec "wdisplays"
+#    bindsym Ctrl+$mod+s --release exec "rofi -matching fuzzy -show screenlayout -modi 'screenlayout:~/.config/rofi/scripts/screenlayouts.sh'  && .config/polybar/multi-monitor-startup.sh"
+    bindsym Ctrl+Shift+$mod+d exec "rofi -matching fuzzy -show wacom -modi 'wacom:~/.config/rofi/scripts/wacom.py'"
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -135,6 +139,8 @@ input type:keyboard {
     bindsym $mod+Tab workspace next_on_output
     bindsym $mod+Shift+Tab workspace prev_on_output
     bindsym $mod+grave exec ~/bin/new-workspace
+    bindsym $mod+Shift+grave exec ~/bin/new-workspace -m
+    bindsym Ctrl+$mod+grave exec ~/bin/new-workspace -m -g
 
     # Switch to workspace
     bindsym $mod+1 workspace number 1

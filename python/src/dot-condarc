@@ -1,9 +1,8 @@
 channels:
   - conda-forge
-  - defaults
-  - intel
-
-# don't update the PS1 bash promt: I have it set to use $(basename $CONDA_PREFIX).
+#  - defaults
+#  - intel
+#  - nodefaults
 changeps1: false
 auto_activate_base: false
 channel_priority: strict
