@@ -116,6 +116,43 @@ call plug#end()
 let mapleader=","
 let maplocalleader=","
 
+" Search for selected text, forwards with * or backwards with # 
+" (as in normal mode)
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+"Toggle highlight search
+nmap ,n :set hls! hls?<cr>
+
+nmap Y y$
+
+" copy and paste to system clipbord
+" single press: copy to system clipboard (register '+')
+" double press: copy to selection clipboard (register '*')
+vmap <C-c> "+y
+vmap <C-x> "+c
+vmap <Leader>y "+y
+vmap <Leader>x "+x
+vmap <Leader>d "+d
+vmap <Leader>p "+p
+" vmap <C-c><C-c> "*y
+" vmap <C-x><C-x> "*c
+" <Insert> is the corresponding key on the keyboard!
+" <S-Insert> is linux default for the `*` register
+nmap <Insert> "+p
+cmap <Insert> "+p
+imap <Insert> <Esc>"+pa
+nmap <S-Insert> "*p
+cmap <S-Insert> "*p
+
 " =========================================================
 " global settings (no vscode)
 " =========================================================
@@ -189,38 +226,6 @@ if ! exists('g:vscode')
 	imap jj <esc>
 
 
-	" Search for selected text, forwards with * or backwards with # 
-	" (as in normal mode)
-	vnoremap <silent> * :<C-U>
-	  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-	  \gvy/<C-R><C-R>=substitute(
-	  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-	  \gV:call setreg('"', old_reg, old_regtype)<CR>
-	vnoremap <silent> # :<C-U>
-	  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-	  \gvy?<C-R><C-R>=substitute(
-	  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-	  \gV:call setreg('"', old_reg, old_regtype)<CR>
-
-	"Toggle highlight search
-	nmap ,n :set hls! hls?<cr>
-
-	nmap Y y$
-
-	" copy and paste to system clipbord
-	" single press: copy to system clipboard (register '+')
-	" double press: copy to selection clipboard (register '*')
-	vmap <C-c> "+y
-	vmap <C-c><C-c> "*y
-	vmap <C-x> "+c
-	vmap <C-x><C-x> "*c
-	" <Insert> is the corresponding key on the keyboard!
-	" <S-Insert> is linux default for the `*` register
-	nmap <Insert> "+p
-	cmap <Insert> "+p
-	imap <Insert> <Esc>"+pa
-	nmap <S-Insert> "*p
-	cmap <S-Insert> "*p
 
 else  " comple the if ! exists('g:vscode')
 	" ---------------------------------------------------------
