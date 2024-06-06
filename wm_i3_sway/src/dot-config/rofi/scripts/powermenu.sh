@@ -2,26 +2,44 @@
 
 if [ $# == 0 ]
 then
-	echo -e "lock"
-	echo -e "logout"
-	echo -e "suspend"
-	echo -e "hibernate"
-	echo -e "shutdown"
-	echo -e "reboot"
-	echo -e "abort"
-	exit 0
+    echo -e "lock"
+    echo -e "disable-idle-lock"
+    echo -e "enable-idle-lock"
+    echo -e "logout"
+    echo -e "suspend"
+    echo -e "hibernate"
+    echo -e "shutdown"
+    echo -e "reboot"
+    echo -e "abort"
+    exit 0
 fi
 
 
 
 case $1 in 
 abort) exit 0;;
-lock) 
+lock)
     if  [[ -n "$WAYLAND_DISPLAY" ]] ; then
         swaylock -c 000000
     else
         setxkbmap -layout us,de -option grp:rctrl_toggle
         loginctl lock-session
+    fi
+    ;;
+disable-idle-lock)
+    if  [[ -n "$WAYLAND_DISPLAY" ]] ; then
+        swayidle -w -C
+    else
+        xset s off
+        xset -dpms
+    fi
+    ;;
+enable-idle-lock)
+    if  [[ -n "$WAYLAND_DISPLAY" ]] ; then
+        swayidle -w -C
+    else
+        xset s on
+        xset +dpms
     fi
     ;;
 logout) 
@@ -30,7 +48,7 @@ logout)
     else
         i3-msg exit
     fi
-     ;;
+    ;;
 suspend)  systemctl suspend ;;
 hibernate)  systemctl hibernate ;;
 shutdown) systemctl poweroff ;;
