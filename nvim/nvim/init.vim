@@ -12,17 +12,13 @@
 " installation-specific configuration
 " =========================================================
 
-" python to be used for external plugins, in a separate conda environment
-" install the 
 " You can check if they work with :checkhealth
 " TODO use $CONDA_EXE info --base
-" if isdirectory(expand('~/installer/miniconda3/envs/neovim-py2/bin'))
-" let g:python_host_prog  = '~/installer/miniconda3/envs/neovim-py2/bin/python'
-" endif
-" if isdirectory(expand('/opt/micromamba/envs/envs/neovim-py3'))
-" let g:python3_host_prog  = '/opt/micromamba/envs/envs/neovim-py3/bin/python'
-" endif
-let g:python3_host_prog  = '/usr/bin/python'
+if isdirectory(expand('~/.nvim_py_env'))
+	let g:python3_host_prog  = '~/.nvim_py_env/bin/python'
+else
+	let g:python3_host_prog  = '/usr/bin/python'
+endif
 
 " =========================================================
 " plugin management with vim-plug
