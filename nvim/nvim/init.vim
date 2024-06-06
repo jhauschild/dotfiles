@@ -159,6 +159,8 @@ cmap <S-Insert> "*p
 if ! exists('g:vscode')
 " exlcude all of the following config for vscode setup
 
+	colorscheme anotherdark
+
 	" fileencoding
 	set encoding=utf-8
 
