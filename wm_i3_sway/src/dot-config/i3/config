@@ -275,6 +275,7 @@ exec --no-startup-id ~/.config/polybar/multi-monitor-startup.sh
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
 #exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
+exec --no-startup-id "xscreensaver &"
 
 # finally, start firefox on ws 7
 exec --no-startup-id sleep 1 && i3-msg 'workspace number 7' && firefox
