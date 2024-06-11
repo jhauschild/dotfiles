@@ -23,7 +23,7 @@ lock)
         swaylock -c 000000
     else
         setxkbmap -layout us,de -option grp:rctrl_toggle
-        loginctl lock-session
+        i3lock --nofork #loginctl lock-session
     fi
     ;;
 disable-idle-lock)
