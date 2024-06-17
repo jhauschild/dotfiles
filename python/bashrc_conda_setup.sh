@@ -14,6 +14,11 @@ else
         export PATH="CONDA_INSTALL_PATH/bin:$PATH"
     fi
 fi
+
+
+if [ -f "CONDA_INSTALL_PATH/etc/profile.d/mamba.sh" ]; then
+    . "CONDA_INSTALL_PATH/etc/profile.d/mamba.sh"
+fi
 unset __conda_setup
 # <<< conda initialize <<<
 fi

@@ -259,13 +259,6 @@ bindsym $mod+r mode "resize"
     exec light -N 0.1  # set minimal value
     bindsym XF86MonBrightnessUp   exec "light -T 1.6"
     bindsym XF86MonBrightnessDown exec "light -T 0.625"
-# Status Bar:
-# bar {
-#         status_command polybar
-# }
-exec --no-startup-id ~/.screenlayout/i3-startup.sh
-exec --no-startup-id ~/.config/polybar/multi-monitor-startup.sh
-
 
 # 
 # Autostart
@@ -275,6 +268,13 @@ exec --no-startup-id ~/.config/polybar/multi-monitor-startup.sh
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex-autostart --autostart --environment i3
 #exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
+
+# Status Bar:
+# bar {
+#         status_command polybar
+# }
+# exec --no-startup-id ~/.screenlayout/i3-startup.sh
+exec --no-startup-id ~/.config/polybar/multi-monitor-startup.sh
 
 # finally, start firefox on ws 7
 exec --no-startup-id sleep 1 && i3-msg 'workspace number 7' && firefox
