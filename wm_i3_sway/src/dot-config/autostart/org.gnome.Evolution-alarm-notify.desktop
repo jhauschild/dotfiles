@@ -2,4 +2,4 @@
 Exec=/usr/libexec/evolution-data-server/evolution-alarm-notify
 Name=evolution-alarm-notify
 Type=Application
-OnlyShowIn=Gnome
+OnlyShowIn=Gnome;

@@ -266,7 +266,7 @@ bindsym $mod+r mode "resize"
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex-autostart --autostart --environment i3
+exec --no-startup-id ~/bin/dex-autostart --autostart --environment i3
 #exec --no-startup-id test -s ~/.ssh_auth_sock || ln -s $SSH_AUTH_SOCK ~/.ssh_auth_sock
 
 # Status Bar:
