@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/usr/bin/dunst
+TryExec=/usr/bin/dunst
+Name=Dunst Desktop notifications
+Comment=Desktop notifications daemon
+Type=Application
