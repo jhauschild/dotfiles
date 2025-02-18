@@ -11,6 +11,7 @@ nmap k gk
 
 " less indent, used in formulas etc
 set tabstop=4
+set expandtab
 
 " -- folding with vimtex for sections etc
 set foldmethod=expr

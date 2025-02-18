@@ -133,21 +133,25 @@ nmap Y y$
 " copy and paste to system clipbord
 " single press: copy to system clipboard (register '+')
 " double press: copy to selection clipboard (register '*')
-vmap <C-c> "+y
-vmap <C-x> "+c
+if ! exists('g:vscode')
+	vmap <C-c> "+y
+	vmap <C-x> "+c
+	" vmap <C-c><C-c> "*y
+	" vmap <C-x><C-x> "*c
+	" <Insert> is the corresponding key on the keyboard!
+	" <S-Insert> is linux default for the `*` register
+	nmap <Insert> "+p
+	cmap <Insert> "+p
+	imap <Insert> <Esc>"+pa
+	nmap <S-Insert> "*p
+	cmap <S-Insert> "*p
+endif
+" <Leader> version of copy/paste to system clipboard
 vmap <Leader>y "+y
 vmap <Leader>x "+x
 vmap <Leader>d "+d
 vmap <Leader>p "+p
-" vmap <C-c><C-c> "*y
-" vmap <C-x><C-x> "*c
-" <Insert> is the corresponding key on the keyboard!
-" <S-Insert> is linux default for the `*` register
-nmap <Insert> "+p
-cmap <Insert> "+p
-imap <Insert> <Esc>"+pa
-nmap <S-Insert> "*p
-cmap <S-Insert> "*p
+
 
 " =========================================================
 " global settings (no vscode)
@@ -225,7 +229,7 @@ if ! exists('g:vscode')
 
 
 
-else  " comple the if ! exists('g:vscode')
+else  " continue the `if ! exists('g:vscode')`
 	" ---------------------------------------------------------
 	" Global vscode settings
 	" ---------------------------------------------------------
@@ -392,6 +396,5 @@ if ! exists('g:vscode')
 	"     \ },
 	" \}
 
-endif
-
+endif  " no vscode
 

@@ -1,4 +1,4 @@
-if isdirectory(expand('~/.config/nvim/plugged/vim-sandwich'))
+if exists("g:sandwich#recipes")
 let b:sandwich_magicchar_f_patterns = [
                               \   {
                               \     'header' : '\<\%(\h\k*\.\)*\h\k*',
