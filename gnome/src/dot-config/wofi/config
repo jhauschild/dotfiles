@@ -1,0 +1,7 @@
+prompt=enter something
+normal_window=true
+matching=multi-contains
+term=gnome-terminal
+location=center
+height=600
+width=800

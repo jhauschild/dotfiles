@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=/usr/bin/ydotoold
+Name=ydootol
+Comment=Daemon for ydotool
+Type=Application

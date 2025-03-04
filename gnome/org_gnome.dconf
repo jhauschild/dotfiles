@@ -1,0 +1,256 @@
+[desktop/datetime]
+automatic-timezone=false
+
+[desktop/file-sharing]
+require-password='always'
+
+[desktop/input-sources]
+sources=[('xkb', 'us'), ('xkb', 'de')]
+xkb-options=['lv3:ralt_switch', 'compose:rctrl']
+
+[desktop/interface]
+color-scheme='default'
+cursor-size=24
+locate-pointer=false
+show-battery-percentage=false
+toolkit-accessibility=true
+
+[desktop/peripherals/keyboard]
+numlock-state=true
+
+[desktop/peripherals/mouse]
+double-click=400
+natural-scroll=false
+
+[desktop/peripherals/touchpad]
+speed=-0.20346320346320346
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
+[desktop/privacy]
+old-files-age=uint32 30
+recent-files-max-age=-1
+remove-old-temp-files=true
+remove-old-trash-files=true
+report-technical-problems=false
+
+[desktop/screensaver]
+color-shading-type='solid'
+lock-delay=uint32 30
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/f40/default/f40.xml'
+primary-color='#000000000000'
+secondary-color='#000000000000'
+
+[desktop/session]
+idle-delay=uint32 600
+
+[desktop/sound]
+event-sounds=true
+theme-name='__custom'
+
+[desktop/wm/keybindings]
+begin-resize=['<Super>r']
+close=['<Shift><Super>q']
+cycle-windows=['<Super>Tab']
+cycle-windows-backward=['<Shift><Super>Tab']
+maximize=@as []
+minimize=['<Super>n']
+move-to-monitor-left=['<Shift><Super>j']
+move-to-monitor-right=['<Shift><Super>k']
+move-to-workspace-last=['<Shift><Super>semicolon']
+move-to-workspace-left=['<Shift><Super>h']
+move-to-workspace-right=['<Shift><Super>l']
+panel-run-dialog=['<Super>0']
+switch-applications=['<Alt>Tab']
+switch-applications-backward=['<Shift><Alt>Tab']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-to-workspace-last=['<Super>semicolon']
+switch-to-workspace-left=['<Super>h']
+switch-to-workspace-right=['<Super>l']
+toggle-maximized=['<Super>m']
+toggle-on-all-workspaces=['<Super>i']
+
+[mutter]
+experimental-features=['scale-monitor-framebuffer']
+workspaces-only-on-primary=false
+
+[mutter/keybindings]
+switch-monitor=['<Super>s']
+toggle-tiled-left=['<Super>y']
+toggle-tiled-right=['<Super>u']
+
+[mutter/wayland/keybindings]
+restore-shortcuts=@as []
+
+[settings-daemon/plugins]
+ambient-enabled=true
+idle-dim=true
+power-button-action='suspend'
+power-saver-profile-on-low-battery=true
+sleep-inactive-ac-timeout=900
+sleep-inactive-ac-type='suspend'
+sleep-inactive-battery-timeout=1200
+sleep-inactive-battery-type='nothing'
+
+[settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-last-coordinates=(48.180117361579484, 11.5327)
+night-light-schedule-automatic=false
+night-light-schedule-from=19.0
+night-light-temperature=uint32 3700
+
+[settings-daemon/plugins/media-keys]
+control-center=['<Shift><Super>s']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/']
+email=['<Super>q']
+home=['<Super>e']
+logout=['<Shift><Control><Super>Home']
+screensaver=['<Shift><Control><Super>Delete']
+search=['<Super>f']
+www=['<Super>w']
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='gnome-terminal'
+name='terminal'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>d'
+command='xournalpp'
+name='Drawing programm'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Shift><Control><Super>Page_Down'
+command='systemctl poweroff'
+name='poweroff'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='<Shift><Control><Super>Page_Up'
+command='systemctlr reboot'
+name='reboot'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom4]
+binding='<Super>c'
+command='firefox --new-window https://app.element.io'
+name='Element'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom5]
+binding='<Control><Super>p'
+command='/home/johannes/.config/wofi/pass.sh'
+name='pass'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom6]
+binding='<Shift><Control><Super>p'
+command='/home/johannes/.config/wofi/pass.sh --type'
+name='pass --type'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom7]
+binding='<Super>p'
+command='wofi --show drun -I'
+name='wofi drun'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom8]
+binding='<Super>o'
+command='wofi --mode run'
+name='wofi run'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom9]
+binding='<Super>Delete'
+command='/home/johannes/.config/wofi/powermenu.sh'
+name='powermenu'
+
+[settings-daemon/plugins/power]
+ambient-enabled=true
+idle-dim=true
+power-button-action='suspend'
+power-saver-profile-on-low-battery=true
+sleep-inactive-ac-timeout=7200
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-timeout=1200
+sleep-inactive-battery-type='suspend'
+
+[settings-daemon/plugins/sharing/gnome-user-share-webdav]
+enabled-connections=@as []
+
+[shell]
+command-history=['terminal', 'thunderbird', 'gnome-terminal', 'htop']
+disable-user-extensions=true
+favorite-apps=['org.gnome.Terminal.desktop', 'org.mozilla.firefox.desktop', 'net.thunderbird.Thunderbird.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Software.desktop']
+had-bluetooth-devices-setup=true
+welcome-dialog-last-shown-version='42.0'
+
+[shell/app-switcher]
+current-workspace-only=false
+
+[shell/keybindings]
+focus-active-notification=['<Shift><Super>period']
+open-application-menu=['<Super>a']
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+toggle-application-view=@as []
+toggle-message-tray=['<Super>period']
+toggle-quick-settings=['<Super>comma']
+
+[shell/weather]
+automatic-location=false
+locations=[<(uint32 2, <('Munich', 'EDMO', true, [(0.83921247618284267, 0.19693131144892936)], [(0.84037603483526957, 0.20216729920491233)])>)>]
+
+[shell/world-clocks]
+locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>, <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>]
+
+[simple-scan]
+brightness=0
+contrast=-7
+document-type='text'
+jpeg-quality=87
+page-side='front'
+paper-height=2970
+paper-width=2100
+photo-dpi=300
+postproc-enabled=false
+save-format='application/pdf'
+text-dpi=200
+
+[system/location]
+enabled=true
+
+[terminal/legacy]
+default-show-menubar=false
+menu-accelerator-enabled=false
+mnemonics-enabled=false
+
+[terminal/legacy/profiles:]
+default='8fbcaa8f-fc22-4934-88fb-a4297fb94b46'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '8fbcaa8f-fc22-4934-88fb-a4297fb94b46', 'dad0333b-0eba-4f8b-aee1-74e7f62d4280']
+
+[terminal/legacy/profiles:/:8fbcaa8f-fc22-4934-88fb-a4297fb94b46]
+audible-bell=false
+background-color='rgb(46,52,54)'
+bold-is-bright=true
+custom-command='fish'
+font='DejaVu Sans Mono 14'
+foreground-color='rgb(211,215,207)'
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+scroll-on-output=false
+scrollback-lines=50000
+title-mode='before'
+use-custom-command=true
+use-system-font=false
+use-theme-colors=false
+visible-name='Joghurt'
+
+[terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+font='Monospace 16'
+use-system-font=false
+use-theme-colors=true
+visible-name='Presentation'
+
+[terminal/legacy/profiles:/:dad0333b-0eba-4f8b-aee1-74e7f62d4280]
+use-theme-colors=false
+visible-name='bright'
