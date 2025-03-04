@@ -44,7 +44,7 @@
 [commit]
 	gpgsign = true
 [pull]
-	rebase = true
+	rebase = false
 [init]
 	defaultBranch = main
 [mergetool]
