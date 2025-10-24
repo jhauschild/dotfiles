@@ -1,0 +1,724 @@
+[Characters]
+recent-characters=['😁', '🕭', '🔔', '₀', '₅', '²', '⌾', '🞋', '🎜', '♫', '🏁', '💦']
+
+[Connections]
+first-run=false
+
+[TextEditor]
+show-line-numbers=true
+show-right-margin=false
+tab-width=uint32 4
+
+[Totem]
+active-plugins=['vimeo', 'variable-rate', 'skipto', 'screenshot', 'screensaver', 'save-file', 'rotation', 'recent', 'movie-properties', 'open-directory', 'mpris', 'autoload-subtitles', 'apple-trailers']
+subtitle-encoding='UTF-8'
+
+[Weather]
+locations=[<(uint32 2, <('Munich', 'EDMO', true, [(0.83921247618284267, 0.19693131144892936)], [(0.84037603483526957, 0.20216729920491233)])>)>]
+window-height=496
+window-maximized=false
+window-width=992
+
+[baobab/ui]
+active-chart='rings'
+is-maximized=false
+window-size=(960, 600)
+
+[boxes]
+first-run=false
+view='list-view'
+window-maximized=false
+
+[calculator]
+accuracy=9
+angle-units='degrees'
+base=10
+button-mode='basic'
+number-format='automatic'
+show-thousands=false
+show-zeroes=false
+source-currency=''
+source-units='degree'
+target-currency=''
+target-units='radian'
+window-maximized=false
+window-size=(1916, 1022)
+word-size=64
+
+[calendar]
+active-view='month'
+window-maximized=true
+window-size=(768, 600)
+
+[clocks]
+timers=@aa{sv} []
+world-clocks=[{'location': <(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>}, {'location': <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>}, {'location': <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>}, {'location': <(uint32 2, <('Berlin', 'EDDB', true, [(0.91426163401859872, 0.23591034304566436)], [(0.91658875132345297, 0.23387411976724018)])>)>}]
+
+[clocks/state/window]
+maximized=false
+panel-id='timer'
+size=(870, 690)
+
+[control-center]
+last-panel='keyboard'
+window-state=(636, 752, true)
+
+[desktop/a11y/applications]
+screen-magnifier-enabled=false
+screen-reader-enabled=false
+
+[desktop/a11y/keyboard]
+mousekeys-enable=false
+
+[desktop/a11y/magnifier]
+mag-factor=7.0
+mouse-tracking='proportional'
+
+[desktop/app-folders]
+folder-children=['Utilities', 'YaST']
+
+[desktop/app-folders/folders/Utilities]
+apps=['gnome-abrt.desktop', 'gnome-system-log.desktop', 'nm-connection-editor.desktop', 'org.gnome.baobab.desktop', 'org.gnome.Connections.desktop', 'org.gnome.DejaDup.desktop', 'org.gnome.Dictionary.desktop', 'org.gnome.DiskUtility.desktop', 'org.gnome.eog.desktop', 'org.gnome.Evince.desktop', 'org.gnome.FileRoller.desktop', 'org.gnome.fonts.desktop', 'org.gnome.seahorse.Application.desktop', 'org.gnome.tweaks.desktop', 'org.gnome.Usage.desktop', 'vinagre.desktop']
+categories=['X-GNOME-Utilities']
+name='X-GNOME-Utilities.directory'
+translate=true
+
+[desktop/app-folders/folders/YaST]
+categories=['X-SuSE-YaST']
+name='suse-yast.directory'
+translate=true
+
+[desktop/background]
+color-shading-type='solid'
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/f40/default/f40.xml'
+picture-uri-dark='file:///usr/share/backgrounds/f40/default/f40.xml'
+primary-color='#000000000000'
+secondary-color='#000000000000'
+
+[desktop/datetime]
+automatic-timezone=false
+
+[desktop/file-sharing]
+require-password='always'
+
+[desktop/input-sources]
+current=uint32 0
+mru-sources=[('xkb', 'us'), ('xkb', 'de')]
+sources=[('xkb', 'us'), ('xkb', 'de')]
+xkb-options=['lv3:ralt_switch', 'compose:rctrl']
+
+[desktop/interface]
+color-scheme='default'
+cursor-size=24
+locate-pointer=false
+show-battery-percentage=false
+toolkit-accessibility=true
+
+[desktop/media-handling]
+autorun-never=false
+autorun-x-content-ignore=@as []
+autorun-x-content-open-folder=@as []
+autorun-x-content-start-app=['x-content/ostree-repository']
+
+[desktop/notifications]
+application-children=['org-gnome-evolution-alarm-notify', 'org-gnome-software', 'org-gnome-settings', 'firefox', 'org-gnome-terminal', 'mozilla-thunderbird', 'com-nextcloud-desktopclient-nextcloud', 'net-thunderbird-thunderbird', 'org-freedesktop-problems-applet', 'org-mozilla-firefox', 'zoom', 'gnome-power-panel', 'org-gnome-clocks']
+show-banners=true
+show-in-lock-screen=false
+
+[desktop/notifications/application/com-nextcloud-desktopclient-nextcloud]
+application-id='com.nextcloud.desktopclient.nextcloud.desktop'
+
+[desktop/notifications/application/firefox]
+application-id='firefox.desktop'
+
+[desktop/notifications/application/gnome-power-panel]
+application-id='gnome-power-panel.desktop'
+
+[desktop/notifications/application/mozilla-thunderbird]
+application-id='mozilla-thunderbird.desktop'
+
+[desktop/notifications/application/net-thunderbird-thunderbird]
+application-id='net.thunderbird.Thunderbird.desktop'
+
+[desktop/notifications/application/org-freedesktop-problems-applet]
+application-id='org.freedesktop.problems.applet.desktop'
+
+[desktop/notifications/application/org-gnome-clocks]
+application-id='org.gnome.clocks.desktop'
+
+[desktop/notifications/application/org-gnome-evolution-alarm-notify]
+application-id='org.gnome.Evolution-alarm-notify.desktop'
+
+[desktop/notifications/application/org-gnome-settings]
+application-id='org.gnome.Settings.desktop'
+
+[desktop/notifications/application/org-gnome-software]
+application-id='org.gnome.Software.desktop'
+
+[desktop/notifications/application/org-gnome-terminal]
+application-id='org.gnome.Terminal.desktop'
+
+[desktop/notifications/application/org-mozilla-firefox]
+application-id='org.mozilla.firefox.desktop'
+
+[desktop/notifications/application/zoom]
+application-id='Zoom.desktop'
+
+[desktop/peripherals/keyboard]
+numlock-state=true
+
+[desktop/peripherals/mouse]
+double-click=400
+natural-scroll=false
+
+[desktop/peripherals/tablets/056a:0376]
+keep-aspect=true
+output=['GSM', '23EA63', '0x01010101']
+
+[desktop/peripherals/tablets/056a:0378]
+keep-aspect=true
+output=['GBT', 'M34WQ', '0x0000022b', 'DP-4']
+
+[desktop/peripherals/tablets/056a:0378/buttonA]
+action='switch-monitor'
+
+[desktop/peripherals/tablets/056a:0378/buttonB]
+action='none'
+
+[desktop/peripherals/tablets/056a:0378/buttonD]
+action='none'
+
+[desktop/peripherals/touchpad]
+speed=-0.20346320346320346
+tap-to-click=true
+two-finger-scrolling-enabled=true
+
+[desktop/privacy]
+old-files-age=uint32 30
+recent-files-max-age=-1
+remove-old-temp-files=true
+remove-old-trash-files=true
+report-technical-problems=false
+
+[desktop/screensaver]
+color-shading-type='solid'
+lock-delay=uint32 30
+picture-options='zoom'
+picture-uri='file:///usr/share/backgrounds/f40/default/f40.xml'
+primary-color='#000000000000'
+secondary-color='#000000000000'
+
+[desktop/search-providers]
+disabled=['org.gnome.Photos.desktop']
+sort-order=['org.gnome.Contacts.desktop', 'org.gnome.Documents.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop', 'org.gnome.Boxes.desktop', 'org.gnome.Calculator.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Characters.desktop', 'org.gnome.clocks.desktop', 'org.gnome.Photos.desktop', 'org.gnome.Settings.desktop', 'org.gnome.Software.desktop']
+
+[desktop/session]
+idle-delay=uint32 600
+
+[desktop/sound]
+event-sounds=true
+theme-name='__custom'
+
+[desktop/wm/keybindings]
+begin-resize=['<Super>r']
+close=['<Shift><Super>q']
+cycle-windows=['<Super>Tab']
+cycle-windows-backward=['<Shift><Super>Tab']
+maximize=@as []
+minimize=['<Super>n']
+move-to-monitor-left=['<Shift><Super>j']
+move-to-monitor-right=['<Shift><Super>k']
+move-to-workspace-last=['<Shift><Super>semicolon']
+move-to-workspace-left=['<Shift><Super>h']
+move-to-workspace-right=['<Shift><Super>l']
+panel-run-dialog=['<Super>0']
+switch-applications=['<Alt>Tab']
+switch-applications-backward=['<Shift><Alt>Tab']
+switch-to-workspace-1=['<Super>1']
+switch-to-workspace-2=['<Super>2']
+switch-to-workspace-3=['<Super>3']
+switch-to-workspace-4=['<Super>4']
+switch-to-workspace-last=['<Super>semicolon']
+switch-to-workspace-left=['<Super>h']
+switch-to-workspace-right=['<Super>l']
+toggle-maximized=['<Super>m']
+toggle-on-all-workspaces=['<Super>i']
+
+[easytag]
+default-path=b'/home/johannes/Musik'
+sort-mode='ascending-track-number'
+
+[eog/ui]
+sidebar=false
+
+[eog/view]
+background-color='rgb(0,0,0)'
+use-background-color=true
+
+[evince]
+document-directory=@ms 'file:///home/johannes/work/referee/2025-02-06-PRB-TNR-algorithm-for-dyn-corrs-and-non-hermitian'
+pictures-directory=@ms 'file:///home/johannes/work/referee/2024-12-19-Masterthesis-Bielefeld-Horstmann'
+
+[evince/default]
+continuous=true
+dual-page=false
+dual-page-odd-left=true
+enable-spellchecking=true
+fullscreen=false
+inverted-colors=false
+show-sidebar=true
+sidebar-page='thumbnails'
+sidebar-size=148
+sizing-mode='free'
+window-ratio=(2.0915032679738563, 1.3636363636363635)
+zoom=1.1364739959409378
+
+[evolution-data-server]
+migrated=true
+network-monitor-gio-name=''
+
+[evolution-data-server/calendar]
+notify-window-height=949
+notify-window-paned-position=355
+notify-window-width=1500
+notify-window-x=0
+notify-window-y=24
+notify-with-tray=true
+reminders-past=['716162564dc10973515de1e26c2bfdb07429d896\n7f50984d42a2159fc42d59eaa4095640e0a9c9a6\t20220831T083000\n1661959500\n1661959800\n1661963400\nBEGIN:VEVENT\r\nCREATED:20220826T084248Z\r\nLAST-MODIFIED:20220831T111222Z\r\nDTSTAMP:20220831T111222Z\r\nUID:87704f63-1df7-4ad5-a177-24ef83cc1089\r\nSUMMARY:Spin Liquid\r\nX-MOZ-LASTACK:20220830T162014Z\r\nDTSTART;TZID=America/Los_Angeles:20220831T083000\r\nDTEND;TZID=America/Los_Angeles:20220831T093000\r\nTRANSP:OPAQUE\r\nX-MOZ-GENERATION:1\r\nX-EVOLUTION-CALDAV-ETAG:e062fe93bef462ff5698ae799e5e6cad\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nTRIGGER:-PT5M\r\nDESCRIPTION:Default Mozilla Description\r\nX-EVOLUTION-ALARM-UID:7f50984d42a2159fc42d59eaa4095640e0a9c9a6\r\nEND:VALARM\r\nEND:VEVENT\r\n', '716162564dc10973515de1e26c2bfdb07429d896\n82b26614d46705d7b19bb19a386a6ca4fa0149af\t20220830T083000\n1661873100\n1661873400\n1661877000\nBEGIN:VEVENT\r\nCREATED:20220826T084248Z\r\nLAST-MODIFIED:20220826T084309Z\r\nDTSTAMP:20220826T084309Z\r\nUID:e79ee344-6f2c-49f8-b392-3ecd5647fc8b\r\nSUMMARY:Spin Liquid\r\nDTSTART;TZID=America/Los_Angeles:20220830T083000\r\nDTEND;TZID=America/Los_Angeles:20220830T093000\r\nTRANSP:OPAQUE\r\nX-EVOLUTION-CALDAV-ETAG:e812c9f26057132bd5efdcb7f7aee5d2\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nTRIGGER:-PT5M\r\nDESCRIPTION:Default Mozilla Description\r\nX-EVOLUTION-ALARM-UID:82b26614d46705d7b19bb19a386a6ca4fa0149af\r\nEND:VALARM\r\nEND:VEVENT\r\n', '04ac04ca715f6501ef39864c3a76aab43e2939da\na2d1c2a8194013bdef4528fc6395f854ea945b07\t20220825T080000\n1661407200\n1661407200\n1661407200\nBEGIN:VTODO\r\nCREATED:20220824T213927Z\r\nLAST-MODIFIED:20220825T085903Z\r\nDTSTAMP:20220825T085903Z\r\nUID:aa7b5c1c-54b6-4f85-9167-c71eaa09c6aa\r\nSUMMARY:optiker termin ausmachen\r\nSTATUS:COMPLETED\r\nX-MOZ-LASTACK:20220825T085858Z\r\nDTSTART;TZID=Europe/Berlin:20220825T080000\r\nCOMPLETED:20220825T085903Z\r\nPERCENT-COMPLETE:100\r\nSEQUENCE:2\r\nX-MOZ-GENERATION:3\r\nX-MOZ-SNOOZE-TIME:20220825T105858Z\r\nX-EVOLUTION-CALDAV-ETAG:d8051dba0c2a9836aa156219a97d7c9d\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nTRIGGER:PT0S\r\nDESCRIPTION:Default Mozilla Description\r\nX-EVOLUTION-ALARM-UID:a2d1c2a8194013bdef4528fc6395f854ea945b07\r\nEND:VALARM\r\nEND:VTODO\r\n', 'da5108687d720dd96e3ec6363620ec5b640155b8\n2192df034b98b0c9f5e97bec3226ee8ea01d992e\t20220811T180000\n1660233600\n1660233600\n1660233600\nBEGIN:VTODO\r\nCREATED:20220712T135924Z\r\nLAST-MODIFIED:20220811T162122Z\r\nDTSTAMP:20220811T162122Z\r\nUID:8091b191-ebad-48dd-9c73-596debae44e9\r\nSUMMARY:maike anrufen\r\nX-MOZ-LASTACK:20220811T162122Z\r\nDTSTART;TZID=Europe/Berlin:20220811T180000\r\nPERCENT-COMPLETE:0\r\nX-MOZ-GENERATION:33\r\nSEQUENCE:7\r\nX-MOZ-SNOOZE-TIME:20220811T182122Z\r\nX-EVOLUTION-CALDAV-ETAG:fe8c8bde2629a73b865115975f26a7f2\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nTRIGGER:PT0S\r\nDESCRIPTION:Default Mozilla Description\r\nX-EVOLUTION-ALARM-UID:2192df034b98b0c9f5e97bec3226ee8ea01d992e\r\nEND:VALARM\r\nEND:VTODO\r\n', '716162564dc10973515de1e26c2bfdb07429d896\nb3060f8a4107a37dc79b8e51a53c47c789faf2d3\t20220811T120000\n1660211700\n1660212000\n1660215600\nBEGIN:VEVENT\r\nCREATED:20220714T093225Z\r\nLAST-MODIFIED:20220714T115503Z\r\nDTSTAMP:20220714T115503Z\r\nUID:\r\n 040000008200E00074C5B7101A82E00800000000C0139483A7EDD701000000000000000010\r\n 0000006E47D604BBBFFD4B856DE610CE766507\r\nSUMMARY:Jour Fixe MQV Konsortientreffen\r\nPRIORITY:5\r\nSTATUS:CONFIRMED\r\nORGANIZER;CN="Rucha, Julia";SCHEDULE-AGENT=CLIENT:mailto:\r\n julia.rucha@gv.mpg.de\r\nATTENDEE;RSVP=TRUE;CN=vondelft@lmu.de;PARTSTAT=NEEDS-ACTION;\r\n ROLE=REQ-PARTICIPANT:mailto:vondelft@lmu.de\r\nATTENDEE;RSVP=TRUE;CN=namalee.danwatte@tum.de;PARTSTAT=NEEDS-ACTION;\r\n ROLE=REQ-PARTICIPANT:mailto:namalee.danwatte@tum.de\r\nATTENDEE;RSVP=TRUE;CN=Lorena.ossio@munich-quantum-valley.de;\r\n PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPANT:mailto:\r\n Lorena.ossio@munich-quantum-valley.de\r\nATTENDEE;RSVP=TRUE;CN=henry.leistner@emft.fraunhofer.de;\r\n PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPANT:mailto:\r\n henry.leistner@emft.fraunhofer.de\r\nATTENDEE;RSVP=TRUE;CN="Lenhard, Bianca Maria";PARTSTAT=NEEDS-ACTION;\r\n ROLE=REQ-PARTICIPANT:mailto:bianca.lenhard@vw.mpq.mpg.de\r\nATTENDEE;RSVP=TRUE;CN="Schlagenhaft, Claudia";PARTSTAT=NEEDS-ACTION;\r\n ROLE=REQ-PARTICIPANT:mailto:claudia.schlagenhaft@iis.fraunhofer.de\r\nATTENDEE;RSVP=TRUE;CN=philipp.altmann@ifi.lmu.de;PARTSTAT=NEEDS-ACTION;\r\n ROLE=REQ-PARTICIPANT:mailto:philipp.altmann@ifi.lmu.de\r\nATTENDEE;RSVP=TRUE;CN=ABA MQV;PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPANT:\r\n mailto:andreas.battenberg@munich-quantum-valley.de\r\nATTENDEE;RSVP=TRUE;CN=sascha.mehlhase@munich-quantum-valley.de;\r\n PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPANT:mailto:\r\n sascha.mehlhase@munich-quantum-valley.de\r\nATTENDEE;CN=Johannes Hauschild;PARTSTAT=ACCEPTED;CUTYPE=INDIVIDUAL:mailto:\r\n johannes.hauschild@tum.de\r\nRRULE:FREQ=WEEKLY;INTERVAL=4;BYDAY=TH;WKST=SU\r\nX-MOZ-LASTACK:20220714T115503Z\r\nDTSTART;TZID=Europe/Berlin:20220714T120000\r\nDTEND;TZID=Europe/Berlin:20220714T130000\r\nCLASS:PUBLIC\r\nDESCRIPTION;LANGUAGE=de-DE:Zoom-Meeting beitreten\\n\\nhttps:\r\n //lmu-munich.zoom.us/j/95617205334?pwd=YjhsVkZyd1RKdmdEbzAvYzhYVXZaUT09\\n\\\r\n n\\n\\nMeeting-ID: 956 1720 5334\\n\\nKenncode: 296977\\n\\nSchnelleinwahl \r\n mobil\\n\\n+496938079883\\,\\,95617205334#\\,\\,\\,\\,*296977# \r\n Deutschland\\n\\n+496950502596\\,\\,95617205334#\\,\\,\\,\\,*296977# \r\n Deutschland\\n\\n\\n\\nEinwahl nach aktuellem Standort\\n\\n        +49 69 3807 \r\n 9883 Deutschland\\n\\n        +49 695 050 2596 Deutschland\\n\\n        +49 \r\n 69 7104 9922 Deutschland\\n\\nMeeting-ID: 956 1720 5334\\n\\nKenncode: \r\n 296977\\n\\nOrtseinwahl suchen: https:\r\n //lmu-munich.zoom.us/u/awYILu91F\\n\\n\\n\\nÜber SIP \r\n beitreten\\n\\n95617205334@zoomcrc.com<mailto:\r\n 95617205334@zoomcrc.com>\\n\\n\\n\\nÜber H.323 beitreten\\n\\n162.255.37.11 \r\n (USA\\n\\n Westen)\\n\\n162.255.36.11 (USA\\n\\n Osten)\\n\\n213.19.144.110 \r\n (Amsterdam\\n\\n Niederlande)\\n\\n213.244.140.110 (Deutschland)\\n\\nKenncode: \r\n 296977\\n\\nMeeting-ID: 956 1720 5334\\n\\n\r\nTRANSP:OPAQUE\r\nSEQUENCE:12\r\nLOCATION;LANGUAGE=de-DE:Zoom\r\nX-MICROSOFT-CDO-APPT-SEQUENCE:12\r\nX-MICROSOFT-CDO-OWNERAPPTID:982173669\r\nX-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE\r\nX-MICROSOFT-CDO-INTENDEDSTATUS:BUSY\r\nX-MICROSOFT-CDO-ALLDAYEVENT:FALSE\r\nX-MICROSOFT-CDO-IMPORTANCE:1\r\nX-MICROSOFT-CDO-INSTTYPE:1\r\nX-MICROSOFT-DONOTFORWARDMEETING:FALSE\r\nX-MICROSOFT-DISALLOW-COUNTER:FALSE\r\nX-MOZ-RECEIVED-SEQUENCE:12\r\nX-MOZ-RECEIVED-DTSTAMP:20220607T151700Z\r\nX-MOZ-INVITED-ATTENDEE:mailto:johannes.hauschild@tum.de\r\nX-MOZ-GENERATION:2\r\nX-EVOLUTION-CALDAV-ETAG:23383c33af431918b0021935fef62bef\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nTRIGGER:-PT5M\r\nDESCRIPTION:Default Mozilla Description\r\nX-EVOLUTION-ALARM-UID:b3060f8a4107a37dc79b8e51a53c47c789faf2d3\r\nEND:VALARM\r\nEND:VEVENT\r\n', 'da5108687d720dd96e3ec6363620ec5b640155b8\ned109f14784b4715a431154ca2c449074f2fb4dd\t20220807T180000\n1659888000\n1659888000\n1659888000\nBEGIN:VTODO\r\nCREATED:20220712T135924Z\r\nLAST-MODIFIED:20220807T160010Z\r\nDTSTAMP:20220807T160010Z\r\nUID:8091b191-ebad-48dd-9c73-596debae44e9\r\nSUMMARY:maike anrufen\r\nX-MOZ-LASTACK:20220807T160010Z\r\nDTSTART;TZID=Europe/Berlin:20220807T180000\r\nPERCENT-COMPLETE:0\r\nX-MOZ-GENERATION:24\r\nSEQUENCE:4\r\nX-MOZ-SNOOZE-TIME:20220807T180010Z\r\nX-EVOLUTION-CALDAV-ETAG:f2f6c5003f9c008f6db1ef507b254de7\r\nBEGIN:VALARM\r\nACTION:DISPLAY\r\nTRIGGER:PT0S\r\nDESCRIPTION:Default Mozilla Description\r\nX-EVOLUTION-ALARM-UID:ed109f14784b4715a431154ca2c449074f2fb4dd\r\nEND:VALARM\r\nEND:VTODO\r\n']
+
+[gedit/plugins]
+active-plugins=['spell', 'sort', 'openlinks', 'modelines', 'filebrowser', 'docinfo']
+
+[gedit/plugins/filebrowser]
+root='file:///'
+tree-view=false
+virtual-root='file:///media/veracrypt1/yubikey'
+
+[gedit/preferences/print]
+print-font-body-pango='Monospace 9'
+print-font-header-pango='Sans 11'
+print-font-numbers-pango='Sans 8'
+print-header=true
+print-line-numbers=uint32 1
+print-syntax-highlighting=true
+print-wrap-mode='none'
+
+[gedit/preferences/ui]
+show-tabs-mode='auto'
+
+[gedit/state/window]
+bottom-panel-size=140
+side-panel-active-page='GeditWindowDocumentsPanel'
+side-panel-size=200
+size=(2752, 1073)
+state=43908
+
+[gnome-system-monitor]
+current-tab='processes'
+show-dependencies=false
+show-whose-processes='user'
+
+[gnome-system-monitor/proctree]
+col-26-visible=false
+col-26-width=0
+
+[gnote]
+start-note='note://gnote/5d2a4f00-c595-44b9-96c8-9793bf78faff'
+
+[libgnomekbd/preview]
+height=707
+width=1864
+x=0
+y=39
+
+[login-screen]
+enable-fingerprint-authentication=true
+enable-password-authentication=true
+enable-smartcard-authentication=false
+
+[maps]
+last-viewed-location=[48.168221395933948, 11.620313823223114]
+map-type='MapsStreetSource'
+transportation-type='pedestrian'
+window-maximized=true
+zoom-level=10
+
+[mutter]
+experimental-features=['scale-monitor-framebuffer']
+workspaces-only-on-primary=false
+
+[mutter/keybindings]
+switch-monitor=['<Super>s']
+toggle-tiled-left=['<Super>y']
+toggle-tiled-right=['<Super>u']
+
+[mutter/wayland/keybindings]
+restore-shortcuts=@as []
+
+[nautilus/icon-view]
+default-zoom-level='standard'
+
+[nautilus/list-view]
+default-zoom-level='small'
+
+[nautilus/preferences]
+default-folder-viewer='list-view'
+migrated-gtk-settings=true
+search-filter-time-type='last_modified'
+search-view='list-view'
+
+[nautilus/window-state]
+initial-size=(890, 550)
+maximized=true
+sidebar-width=255
+
+[nm-applet/eap/00d39725-2096-4beb-92c8-6b9d65227ea2]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/027bd630-9793-4a3f-957d-44ee86c2cf5d]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/104f9cc7-cdd9-4a10-af39-2201da1706ab]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/11042b2e-1d81-4f69-b25e-05fddddfdcce]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/1c734946-8d8c-4f5a-8812-599b1b43a4da]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/261ebebc-09ee-4f64-8b99-ac3b6576ece4]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/30f8ecd2-6d3f-4544-8b2d-3b28f0c80e7a]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/3453c431-9e28-4081-a76e-b5276e32ee09]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/34773383-b4a0-497c-9249-ffca30afee0f]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/35928719-fb67-4655-a73a-24f4d03c9435]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/3f80e789-9f1c-4b5c-884f-64c48e539d13]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/4265dbfa-4c57-49c7-8ea4-c4832a77aa8b]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/46c64818-613c-4fa4-837f-ac49ecb3ed74]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/5553dd15-60d3-4389-b3bf-dea95dddd4fb]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/6a2f218d-d152-4ac8-ba4a-ce3ae925486a]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/6b422efd-319d-4228-82bf-afb7916fe8f8]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/76dce3f6-30dc-40c3-adcc-bc32691b1134]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/7f3875fa-3c00-4240-b79c-124e4bc9f541]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/88237085-1d62-42d4-9d10-4ce4618da59b]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/88273b2f-2cb1-4f39-8151-5bc5727e5067]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/8993947b-5a81-43fe-85db-0c1f18ea9ae1]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/911be9f4-8650-4851-84aa-0e73fc7d0e9a]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/97163cfa-73a4-447e-ab3b-84280a7bf164]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/a0e697cb-66ff-40b5-8ba7-465447b9773f]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/a6ca5cb5-700d-4129-963e-93d4c7d6e4e0]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/afa1fbee-a8c2-4602-b66f-5d16ce78b7f0]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/bd7c1a0f-aefb-45b8-a58b-3282aaed4fa0]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/c1a78756-5e4f-4f23-a5f3-61f928adbfc2]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/cc5b8ffb-bab0-4e83-be14-6a7be9e0ff81]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/cc72c33d-5501-4882-8ce9-4d4708aecf96]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/cfd1100f-65b5-39ed-8e48-89993ac59309]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/d872ec36-ef05-4156-ad65-df6ed5129120]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/d88b8f1f-0eb1-46f4-83e7-00dae6d4b7ab]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/d9d99991-d440-43b3-83e9-84338e745cd1]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/dea5b710-f1dc-4b4f-99c6-4087763d93d1]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/df1b3ec5-e7fe-4c42-8143-da4cf6af9409]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/e50a3fc9-d195-46a1-9ff5-273451080e5c]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/eb75a608-153b-4fd5-b3dd-98dcf82aed90]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/f12febc8-7211-40ca-b80c-0d157a56060f]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/f774b981-93ab-42fd-b9bb-986f4dd7ebf9]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/f952f5d9-46a2-4a8f-8ab0-f23e448e9fa1]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/ffa29523-273f-4556-9bb0-63611b322dc8]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[settings-daemon/plugins]
+ambient-enabled=true
+idle-dim=true
+power-button-action='suspend'
+power-saver-profile-on-low-battery=true
+sleep-inactive-ac-timeout=900
+sleep-inactive-ac-type='suspend'
+sleep-inactive-battery-timeout=1200
+sleep-inactive-battery-type='nothing'
+
+[settings-daemon/plugins/color]
+night-light-enabled=true
+night-light-last-coordinates=(48.180117361579484, 11.5327)
+night-light-schedule-automatic=false
+night-light-schedule-from=19.0
+night-light-temperature=uint32 3700
+
+[settings-daemon/plugins/media-keys]
+control-center=['<Shift><Super>s']
+custom-keybindings=['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom4/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom5/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom6/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom7/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom8/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom9/']
+email=['<Super>q']
+home=['<Super>e']
+logout=['<Shift><Control><Super>Home']
+screensaver=['<Shift><Control><Super>Delete']
+search=['<Super>f']
+www=['<Super>w']
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom0]
+binding='<Super>Return'
+command='gnome-terminal'
+name='terminal'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom1]
+binding='<Super>d'
+command='xournalpp'
+name='Drawing programm'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom2]
+binding='<Shift><Control><Super>Page_Down'
+command='systemctl poweroff'
+name='poweroff'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom3]
+binding='<Shift><Control><Super>Page_Up'
+command='systemctl reboot'
+name='reboot'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom4]
+binding='<Super>c'
+command='firefox --new-window https://app.element.io'
+name='Element'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom5]
+binding='<Control><Super>p'
+command='/home/johannes/.config/wofi/pass.sh'
+name='pass'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom6]
+binding='<Shift><Control><Super>p'
+command='/home/johannes/.config/wofi/pass.sh --type'
+name='pass --type'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom7]
+binding='<Super>p'
+command='wofi --show drun -I'
+name='wofi drun'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom8]
+binding='<Super>o'
+command='wofi --mode run'
+name='wofi run'
+
+[settings-daemon/plugins/media-keys/custom-keybindings/custom9]
+binding='<Super>Delete'
+command='/home/johannes/.config/wofi/powermenu.sh'
+name='powermenu'
+
+[settings-daemon/plugins/power]
+ambient-enabled=true
+idle-dim=true
+power-button-action='suspend'
+power-saver-profile-on-low-battery=true
+sleep-inactive-ac-timeout=7200
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-timeout=1200
+sleep-inactive-battery-type='suspend'
+
+[settings-daemon/plugins/sharing/gnome-user-share-webdav]
+enabled-connections=@as []
+
+[shell]
+command-history=['terminal', 'thunderbird', 'gnome-terminal', 'htop']
+disable-user-extensions=true
+favorite-apps=['org.gnome.Terminal.desktop', 'org.mozilla.firefox.desktop', 'net.thunderbird.Thunderbird.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Software.desktop']
+had-bluetooth-devices-setup=true
+welcome-dialog-last-shown-version='42.0'
+
+[shell/app-switcher]
+current-workspace-only=false
+
+[shell/keybindings]
+focus-active-notification=['<Shift><Super>period']
+open-application-menu=['<Super>a']
+switch-to-application-1=@as []
+switch-to-application-2=@as []
+switch-to-application-3=@as []
+switch-to-application-4=@as []
+toggle-application-view=@as []
+toggle-message-tray=['<Super>period']
+toggle-quick-settings=['<Super>comma']
+
+[shell/weather]
+automatic-location=false
+locations=[<(uint32 2, <('Munich', 'EDMO', true, [(0.83921247618284267, 0.19693131144892936)], [(0.84037603483526957, 0.20216729920491233)])>)>]
+
+[shell/world-clocks]
+locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>, <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>, <(uint32 2, <('Berlin', 'EDDB', true, [(0.91426163401859872, 0.23591034304566436)], [(0.91658875132345297, 0.23387411976724018)])>)>]
+
+[simple-scan]
+brightness=0
+contrast=-7
+document-type='text'
+jpeg-quality=87
+page-side='front'
+paper-height=2970
+paper-width=2100
+photo-dpi=300
+postproc-enabled=false
+save-directory='file:///home/johannes/Dokumente/HCG-Freunde/Finanzen/Spendenbescheinigungen/geldzuwendungen/'
+save-format='application/pdf'
+selected-device='airscan:e2:HP Color LaserJet MFP M377dw (DC063C)-4 (USB)'
+text-dpi=200
+
+[software]
+check-timestamp=int64 1741336372
+first-run=false
+flatpak-purge-timestamp=int64 1741263080
+install-timestamp=int64 1741163510
+online-updates-timestamp=int64 1683104347
+packagekit-historical-updates-timestamp=uint64 1741163510
+security-timestamp=int64 1741336374346312
+update-notification-timestamp=int64 1741163568
+upgrade-notification-timestamp=int64 1735514070
+
+[system/location]
+enabled=true
+
+[terminal/legacy]
+default-show-menubar=false
+menu-accelerator-enabled=false
+mnemonics-enabled=false
+
+[terminal/legacy/profiles:]
+default='8fbcaa8f-fc22-4934-88fb-a4297fb94b46'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '8fbcaa8f-fc22-4934-88fb-a4297fb94b46', 'dad0333b-0eba-4f8b-aee1-74e7f62d4280']
+
+[terminal/legacy/profiles:/:8fbcaa8f-fc22-4934-88fb-a4297fb94b46]
+audible-bell=false
+background-color='rgb(46,52,54)'
+bold-is-bright=true
+custom-command='fish'
+font='DejaVu Sans Mono 14'
+foreground-color='rgb(211,215,207)'
+palette=['rgb(46,52,54)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+scroll-on-output=false
+scrollback-lines=50000
+title-mode='before'
+use-custom-command=true
+use-system-font=false
+use-theme-colors=false
+visible-name='Joghurt'
+
+[terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+font='Monospace 16'
+use-system-font=false
+use-theme-colors=true
+visible-name='Presentation'
+
+[terminal/legacy/profiles:/:dad0333b-0eba-4f8b-aee1-74e7f62d4280]
+use-theme-colors=false
+visible-name='bright'

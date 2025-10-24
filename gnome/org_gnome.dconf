@@ -77,6 +77,7 @@ toggle-on-all-workspaces=['<Super>i']
 [mutter]
 experimental-features=['scale-monitor-framebuffer']
 workspaces-only-on-primary=false
+attach-modal-dialogs=false
 
 [mutter/keybindings]
 switch-monitor=['<Super>s']
@@ -99,8 +100,8 @@ sleep-inactive-battery-type='nothing'
 [settings-daemon/plugins/color]
 night-light-enabled=true
 night-light-last-coordinates=(48.180117361579484, 11.5327)
-night-light-schedule-automatic=false
-night-light-schedule-from=19.0
+night-light-schedule-automatic=true
+#night-light-schedule-from=20.0
 night-light-temperature=uint32 3700
 
 [settings-daemon/plugins/media-keys]
@@ -130,7 +131,7 @@ name='poweroff'
 
 [settings-daemon/plugins/media-keys/custom-keybindings/custom3]
 binding='<Shift><Control><Super>Page_Up'
-command='systemctlr reboot'
+command='systemctl reboot'
 name='reboot'
 
 [settings-daemon/plugins/media-keys/custom-keybindings/custom4]
@@ -202,7 +203,7 @@ automatic-location=false
 locations=[<(uint32 2, <('Munich', 'EDMO', true, [(0.83921247618284267, 0.19693131144892936)], [(0.84037603483526957, 0.20216729920491233)])>)>]
 
 [shell/world-clocks]
-locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>, <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>]
+locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('Taipei', 'RCSS', true, [(0.43749587165100939, 2.1214477057991075)], [(0.43716593460921238, 2.1211308587267008)])>)>, <(uint32 2, <('Los Angeles', 'KCQT', true, [(0.59370283970450188, -2.0644336110828618)], [(0.59432360095955872, -2.063741622941031)])>)>, <(uint32 2, <('Berlin', 'EDDB', true, [(0.91426163401859872, 0.23591034304566436)], [(0.91658875132345297, 0.23387411976724018)])>)>]
 
 [simple-scan]
 brightness=0
