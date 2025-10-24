@@ -14,8 +14,8 @@
 
 " You can check if they work with :checkhealth
 " TODO use $CONDA_EXE info --base
-if isdirectory(expand('~/.nvim_py_env'))
-	let g:python3_host_prog  = '~/.nvim_py_env/bin/python'
+if isdirectory(expand('~/.config/nvim/.pynvim_env/bin'))
+	let g:python3_host_prog  = expand('~/.config/nvim/.pynvim_env/bin/python')
 else
 	let g:python3_host_prog  = '/usr/bin/python'
 endif
@@ -82,6 +82,7 @@ Plug 'ycm-core/YouCompleteMe', Cond(!exists('g:vscode'), { 'branch': 'master', '
 
 
 Plug 'dense-analysis/ale', Cond(!exists('g:vscode'))          " asynchronous syntax/lint checker
+" let g:ale_linters_ignore = {'python': ['pyright']}
 " Plug 'ludovicchabant/vim-gutentags'
 
 " Git integration
@@ -92,7 +93,8 @@ Plug 'tpope/vim-fugitive', Cond(!exists('g:vscode'))          " integration of g
 " Support for individual programming languages
 " ---------------------------------------------------------
 " LaTeX
-Plug 'lervag/vimtex', Cond(!exists('g:vscode'), {'for': 'tex'})  " Latex tools
+Plug 'lervag/vimtex', Cond(!exists('g:vscode'))  " Latex tools. 
+" note: No lazy loading for tex only to allow synctex-inverse search
 "Plug 'vim-latex/vim-latex', {'for': 'tex'} " Latex-Suite
 
 " Julia support; insert unicode characters
