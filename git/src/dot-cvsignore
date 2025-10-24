@@ -10,6 +10,7 @@
 *.pyo
 thumbs.db
 tmp_*
+tmp
 tags
 .git
 .nobackup
@@ -26,3 +27,9 @@ playground
 .obsidian
 .vscode
 TODO_JH.md
+.sync-exclude.lst
+*.aux
+*.fls
+*.log
+*.fdb_latexmk
+*.out

@@ -1,7 +1,7 @@
 [user]
 	name = Johannes Hauschild
 	email = git@johannes-hauschild.de
-	signingkey = D25EE41EC6257B02
+	signingkey = 121819BE0BAD3EB0
 [core]
 	autocrlf = input
 	safecrlf = warn
