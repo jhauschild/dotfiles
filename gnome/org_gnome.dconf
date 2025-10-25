@@ -6,7 +6,7 @@ require-password='always'
 
 [desktop/input-sources]
 sources=[('xkb', 'us'), ('xkb', 'de')]
-xkb-options=['lv3:ralt_switch', 'compose:rctrl']
+xkb-options=['lv3:ralt_switch', 'compose:caps']
 
 [desktop/interface]
 color-scheme='default'
@@ -92,16 +92,16 @@ ambient-enabled=true
 idle-dim=true
 power-button-action='suspend'
 power-saver-profile-on-low-battery=true
-sleep-inactive-ac-timeout=900
-sleep-inactive-ac-type='suspend'
-sleep-inactive-battery-timeout=1200
+sleep-inactive-ac-timeout=7200
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-timeout=7200
 sleep-inactive-battery-type='nothing'
 
 [settings-daemon/plugins/color]
 night-light-enabled=true
 night-light-last-coordinates=(48.180117361579484, 11.5327)
 night-light-schedule-automatic=true
-#night-light-schedule-from=20.0
+night-light-schedule-from=19.0
 night-light-temperature=uint32 3700
 
 [settings-daemon/plugins/media-keys]
@@ -180,12 +180,34 @@ enabled-connections=@as []
 [shell]
 command-history=['terminal', 'thunderbird', 'gnome-terminal', 'htop']
 disable-user-extensions=true
+enabled-extensions=[]
+# enabled-extensions=['ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com']
 favorite-apps=['org.gnome.Terminal.desktop', 'org.mozilla.firefox.desktop', 'net.thunderbird.Thunderbird.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Software.desktop']
 had-bluetooth-devices-setup=true
 welcome-dialog-last-shown-version='42.0'
 
 [shell/app-switcher]
 current-workspace-only=false
+
+
+[shell/extensions/clipboard-history]
+window-width-percentage=0
+
+[shell/extensions/clipboard-indicator]
+cache-size=50
+clear-history=['<Super>F10']
+clear-history-interval=120
+clear-history-on-interval=false
+clear-on-boot=true
+confirm-clear=false
+history-size=50
+next-entry=['<Super>F12']
+next-history-clear=-1
+notify-on-cycle=false
+prev-entry=['<Super>F11']
+private-mode-binding=['<Super>F8']
+toggle-menu=['<Super>F9']
+
 
 [shell/keybindings]
 focus-active-notification=['<Shift><Super>period']
@@ -255,3 +277,6 @@ visible-name='Presentation'
 [terminal/legacy/profiles:/:dad0333b-0eba-4f8b-aee1-74e7f62d4280]
 use-theme-colors=false
 visible-name='bright'
+
+
+

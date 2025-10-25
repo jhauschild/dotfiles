@@ -1,6 +1,7 @@
 prompt=enter something
 normal_window=true
 matching=multi-contains
+insensitive=true
 term=gnome-terminal
 location=center
 height=600
