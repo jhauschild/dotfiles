@@ -180,7 +180,7 @@ enabled-connections=@as []
 [shell]
 command-history=['terminal', 'thunderbird', 'gnome-terminal', 'htop']
 disable-user-extensions=true
-enabled-extensions=[]
+#enabled-extensions=[]
 # enabled-extensions=['ding@rastersoft.com', 'ubuntu-dock@ubuntu.com', 'tiling-assistant@ubuntu.com']
 favorite-apps=['org.gnome.Terminal.desktop', 'org.mozilla.firefox.desktop', 'net.thunderbird.Thunderbird.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Calendar.desktop', 'org.gnome.Software.desktop']
 had-bluetooth-devices-setup=true

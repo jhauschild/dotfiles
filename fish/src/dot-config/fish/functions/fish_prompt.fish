@@ -38,9 +38,9 @@ function fish_right_prompt --description 'right prompt'
         set status_color (set_color $fish_color_error)
     end
     
-    set runtime (printf '%02.0f.%03d' (math $CMD_DURATION / 1000) (math $CMD_DURATION % 1000))
+    set runtime (printf '%02.0f.%03d' (math $CMD_DURATION %60000 / 1000) (math $CMD_DURATION % 1000))
     if [ $CMD_DURATION -gt 60000 ]
-        set runtime (printf '%02.0f:%s' (math $CMD_DURATION / 60000) $runtime)
+        set runtime (printf '%02.0f:%s' (math $CMD_DURATION % 3600000 / 60000) $runtime)
         if [ $CMD_DURATION -gt 3600000 ]
             set runtime (printf '%02.0f:%s' (math $CMD_DURATION / 3600000) $runtime)
         end
