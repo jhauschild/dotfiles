@@ -35,3 +35,8 @@ fi
 
 # according to man 1 gpg-agent, this should be set
 export GPG_TTY=$(tty)
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/johannes/.lmstudio/bin"
+# End of LM Studio CLI section
+

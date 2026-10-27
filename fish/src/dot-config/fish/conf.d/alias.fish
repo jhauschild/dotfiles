@@ -30,8 +30,7 @@ abbr -a du --position command du -sh
 abbr -a conda --position command micromamba
 abbr -a coa --position command micromamba activate
 
-abbr -a p --position command python
-abbr -a p3 --position command python3
+abbr -a p --position command python3
 abbr -a jy --position command jupyter 
 abbr -a jl --position command jupyter lab
 

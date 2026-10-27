@@ -17,7 +17,7 @@
 if isdirectory(expand('~/.config/nvim/.pynvim_env/bin'))
 	let g:python3_host_prog  = expand('~/.config/nvim/.pynvim_env/bin/python')
 else
-	let g:python3_host_prog  = '/usr/bin/python'
+	let g:python3_host_prog  = '/usr/bin/python3'
 endif
 
 " =========================================================
@@ -75,7 +75,7 @@ function! BuildYCM(info)
   " - force:  set on PlugInstall! or PlugUpdate!
   if a:info.status != 'unchanged' || a:info.force
     " !micromamba activate neovim-py3
-    !/usr/bin/python ./install.py
+    !/usr/bin/python3 ./install.py
   endif
 endfunction
 Plug 'ycm-core/YouCompleteMe', Cond(!exists('g:vscode'), { 'branch': 'master', 'do': function('BuildYCM')})
